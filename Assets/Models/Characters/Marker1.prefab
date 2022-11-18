@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1950740301321415729}
   - component: {fileID: 4882801322305221471}
   m_Layer: 0
-  m_Name: whale
+  m_Name: Marker1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

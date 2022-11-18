@@ -18,6 +18,7 @@ public class ObjectSpawnManager : MonoBehaviour
     Dictionary<GameObject, Vector3> spawnedObjectPositionMap = new Dictionary<GameObject, Vector3>();
 
     const float OBJECT_MIN_DISTANCE = 0.2f;
+    private Vector3 scaleFactor = new Vector3(-0.95f);
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +65,8 @@ public class ObjectSpawnManager : MonoBehaviour
     private void SpawnPrefab(GameObject spawnablePrefab, Vector3 spawnPosition)
     {
         spawnedObjectPositionMap[spawnablePrefab] = spawnPosition;
-        Instantiate(spawnablePrefab, spawnPosition, Quaternion.identity);
+        var newPrefab = Instantiate(spawnablePrefab, spawnPosition, Quaternion.identity);
+        newPrefab.tra
     }
 }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.XR.ARFoundation;
 
-public class EnvObjSpawnableManager : MonoBehaviour
+public class ObjectSpawnManager : MonoBehaviour
 {
     [SerializeField]
     ARRaycastManager m_RaycastManager;

@@ -835,7 +835,7 @@ PrefabInstance:
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
@@ -845,22 +845,22 @@ PrefabInstance:
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.17364807
       objectReference: {fileID: 0}
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a,
         type: 3}
@@ -1057,9 +1057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c8d58f40c9c4afc8629edd3ca3d455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RaycastManager: {fileID: 0}
+  m_RaycastManager: {fileID: 1659859600}
   ArPrefabs:
-  - {fileID: 4882801322305221464, guid: 2c65b24e4a807431d836e1e46f0277c4, type: 3}
+  - {fileID: 985720236391477729, guid: ad8ff8587ebb848959b635bfd44804f6, type: 3}
 --- !u!114 &1659859604
 MonoBehaviour:
   m_ObjectHideFlags: 0

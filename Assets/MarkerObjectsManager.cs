@@ -99,7 +99,9 @@ public class MarkerObjectsManager : MonoBehaviour
                 GameObject hittedGameObject = hitObject.collider.gameObject;
                 Debug.Log(MarkerObjectsManager.DEBUG_MARK + hittedGameObject.name + " hitted");
                 Animator objectAnimator = hittedGameObject.GetComponent(typeof(Animator)) as Animator;
-                objectAnimator.Play("Rotate", 0, -1);
+                AudioSource objectTalk = hittedGameObject.GetComponent(typeof(AudioSource)) as AudioSource;
+                objectAnimator.Play("Somersault", 0, -1);
+                objectTalk.Play(0);
                 //Do whatever you want to do with the hitObject, which in this case would be your, well, case. Identify it either through name or tag, for instance below.
                 // if (hitObject.transform.CompareTag("case"))
                 // {

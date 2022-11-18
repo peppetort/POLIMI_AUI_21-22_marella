@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Spawnable
+  - plant
+  - animal
+  - other
   layers:
   - Default
   - TransparentFX

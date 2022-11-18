@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5372473213754672324}
   m_Layer: 0
   m_Name: Plant 8
-  m_TagString: Spawnable
+  m_TagString: other
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

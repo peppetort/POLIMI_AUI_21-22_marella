@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1994491093542487320}
   m_Layer: 0
   m_Name: Plant 2
-  m_TagString: Spawnable
+  m_TagString: other
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

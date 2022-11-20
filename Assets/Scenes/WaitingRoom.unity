@@ -1057,9 +1057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c8d58f40c9c4afc8629edd3ca3d455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RaycastManager: {fileID: 1659859600}
-  ArPrefabs:
-  - {fileID: 4240981872743870774, guid: ad8ff8587ebb848959b635bfd44804f6, type: 3}
+  ARGameObjects:
+  - {fileID: 5148889009550518405, guid: ad8ff8587ebb848959b635bfd44804f6, type: 3}
 --- !u!114 &1659859604
 MonoBehaviour:
   m_ObjectHideFlags: 0

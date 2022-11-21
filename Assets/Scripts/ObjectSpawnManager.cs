@@ -22,7 +22,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
     const float OBJECT_MIN_DISTANCE_CATEGORY = 0.15f;
     const float OBJECT_MIN_DISTANCE_GROUP = 1f;
-    private Vector3 scaleChange = new Vector3(-0.95f, -0.95f, -0.95f);
+    private Vector3 scaleChange = new Vector3(-0.4f, -0.4f, -0.4f);
 
     // Start is called before the first frame update
     void Start()
@@ -98,6 +98,7 @@ public class ObjectSpawnManager : MonoBehaviour
         spawnedObjectPositionMap[selectedPrefab] = spawnPosition;
         var newPrefab = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
         newPrefab.transform.localScale += scaleChange;
+        newPrefab.transform.Rotate(0f, 180f, 0f);
         spawnablePrefabList.RemoveAt(index);
     }
 }

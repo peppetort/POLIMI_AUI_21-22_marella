@@ -1138,16 +1138,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RaycastManager: {fileID: 1659859600}
   spawnablePrefabList:
-  - {fileID: 1206027258543592, guid: 17c5899683fc5714888b118cff5777db, type: 3}
   - {fileID: 1180342016979008, guid: 92e38535e8317804a957850b5e99d26f, type: 3}
   - {fileID: 1770228635260890, guid: db4132a9437fa0845b3f05eca4931a8b, type: 3}
   - {fileID: 1026551250251634, guid: 700c296b7befd1a4b9053c51a679889b, type: 3}
   - {fileID: 1906287129859858, guid: 1ab43a6cb340fe048b3282a24f8cae53, type: 3}
+  - {fileID: 1793789135816256, guid: 674be433cb1635c41977aa42d9f3be32, type: 3}
+  - {fileID: 1262627149343418, guid: fef725ad03bcd2047819baad0f17c72d, type: 3}
+  - {fileID: 1623537648571618, guid: 3c36338330cf77b4a8a4d978caadb8a2, type: 3}
+  - {fileID: 1034135488908790, guid: 206582bdd44f1054898575bd2175e1e4, type: 3}
+  - {fileID: 1182076404277382, guid: baa6d4ce1ed7fbf48a0b7d27fcb325cb, type: 3}
+  - {fileID: 1078421403797662, guid: 590d9cf91c03ddc41b764d305c5afa23, type: 3}
   - {fileID: 1173133069666890, guid: db388351c9feef849abf6f5d8726ce7e, type: 3}
   - {fileID: 1075399496971446, guid: 4805c6e459be236498fac5ab13c049eb, type: 3}
-  - {fileID: 1261413276154670, guid: 739f58011a2ae06458d034e002701df9, type: 3}
-  - {fileID: 1262627149343418, guid: fef725ad03bcd2047819baad0f17c72d, type: 3}
-  - {fileID: 1034135488908790, guid: 206582bdd44f1054898575bd2175e1e4, type: 3}
 --- !u!114 &1659859603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,6 +1162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c8d58f40c9c4afc8629edd3ca3d455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogCanvas: {fileID: 1276172749511605286, guid: a78efac7d7378454eb85489c15d78248,
+    type: 3}
   ARGameObjects:
   - {fileID: 1521539475015914560, guid: 2f5c5272c2bbd47728a4ff8cf516d89d, type: 3}
 --- !u!114 &1659859604

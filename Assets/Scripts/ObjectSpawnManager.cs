@@ -20,9 +20,9 @@ public class ObjectSpawnManager : MonoBehaviour
     // object types
     Dictionary<GameObject, List<string>> spawnedObjectNearTagMap = new Dictionary<GameObject, List<string>>();
 
-    const float OBJECT_MIN_DISTANCE_CATEGORY = 0.15f;
+    const float OBJECT_MIN_DISTANCE_CATEGORY = 0.3f;
     const float OBJECT_MIN_DISTANCE_GROUP = 1f;
-    private Vector3 scaleChange = new Vector3(-0.4f, -0.4f, -0.4f);
+    private Vector3 scaleChange = new Vector3(-0.5f, -0.5f, -0.5f);
 
     // Start is called before the first frame update
     void Start()
@@ -43,23 +43,11 @@ public class ObjectSpawnManager : MonoBehaviour
         RaycastHit hit;
         if (m_RaycastManager.Raycast(randomScreenPosition, m_Hits))
         {
-            // // check distance between selected position and the ones already in the scene in order to distriute them all over the scene
-            // foreach (KeyValuePair<GameObject, Vector3> entry in spawnedObjectPositionMap)
-            // {
-            //     float distance = Vector3.Distance(m_Hits[m_Hits.Count - 1].pose.position, entry.Value);
-            //     Debug.Log(distance);
-            //     if (distance < OBJECT_MIN_DISTANCE)
-            //         return;
-            // }
 
             Ray ray = arCam.ScreenPointToRay(m_Hits[m_Hits.Count - 1].pose.position);
             if (Physics.Raycast(ray, out hit))
             {
                 SpawnRandomPrefab(m_Hits[m_Hits.Count - 1].pose.position);
-                // var random = new System.Random();
-                // int index = random.Next(spawnablePrefabList.Count);
-                // SpawnPrefab(spawnablePrefabList[index], m_Hits[m_Hits.Count - 1].pose.position);
-                // spawnablePrefabList.RemoveAt(index);
 
             }
 

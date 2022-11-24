@@ -50,11 +50,14 @@ public class MarkerObjectsManager : MonoBehaviour
             var selectedCharacter = ARGameObjects[randomCharacterIndex];
             var instance = Instantiate(selectedCharacter, trackedImage.transform);
 
+
             //selectedCharacter.instantiate(trackedImage.transform);
 
             // associate character to the marker
             var markerName = trackedImage.referenceImage.name;
             markerToCharacterMap[markerName] = instance;
+
+            Debug.Log(DEBUG_MARK + instance.name + " associated to " + markerName);
 
             // remove character from avaialble
             ARGameObjects.RemoveAt(randomCharacterIndex);

@@ -1162,8 +1162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c8d58f40c9c4afc8629edd3ca3d455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogCanvas: {fileID: 1276172749511605286, guid: a78efac7d7378454eb85489c15d78248,
-    type: 3}
+  trackedImagesManager: {fileID: 0}
   ARGameObjects:
   - {fileID: 1521539475015914560, guid: 2f5c5272c2bbd47728a4ff8cf516d89d, type: 3}
 --- !u!114 &1659859604

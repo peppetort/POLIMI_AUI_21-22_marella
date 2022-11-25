@@ -18,7 +18,6 @@ public class MarkerObjectsManager : MonoBehaviour
 
     private Dictionary<string, GameObject> markerToCharacterMap = new Dictionary<string, GameObject>();
 
-
     void Awake()
     {
         trackedImagesManager = GetComponent<ARTrackedImageManager>();

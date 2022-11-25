@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Video;
 
 // keep the status of the interaction
 enum InteractionStatus
 {
     Ready,
     Talking,
-    ShowingVideo,
     TalkingEnded,
-    VideoEnded,
 }
 
 public class Character : MonoBehaviour
@@ -18,9 +18,12 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     public GameObject dialog;
+    [SerializeField]
+    public string storyVideoPath;
 
     private Animator animator;
     private AudioSource audioSource;
+    private VideoPlayer videoPlayer;
     private new Renderer renderer;
 
 
@@ -32,9 +35,22 @@ public class Character : MonoBehaviour
 
         animator = gameObject.GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
+        videoPlayer = gameObject.GetComponent<VideoPlayer>();
         renderer = gameObject.GetComponentInChildren<Renderer>();
 
-        createDialog();
+        Debug.Log(DEBUG_MARK + videoPlayer);
+
+        dialog.SetActive(false);
+        dialog = Instantiate(dialog, gameObject.transform);
+
+        var dialogCanvas = dialog.GetComponentInChildren(typeof(Canvas)) as Canvas;
+        var camera = GameObject.Find("AR Camera").GetComponent<Camera>();
+        dialogCanvas.worldCamera = camera;
+
+        var buttons = dialogCanvas.GetComponentsInChildren<UnityEngine.UI.Button>();
+
+        buttons[0].onClick.AddListener(onYesButtonClickedCallback);
+        buttons[1].onClick.AddListener(onNoButtonClickedCallback);
     }
 
     public void OnMouseDown()
@@ -77,26 +93,19 @@ public class Character : MonoBehaviour
             }
 
         }
-    }
 
-    private void createDialog()
-    {
-        dialog.SetActive(false);
-        dialog = Instantiate(dialog, gameObject.transform);
-
-        var dialogCanvas = dialog.GetComponentInChildren(typeof(Canvas)) as Canvas;
-        var camera = GameObject.Find("AR Camera").GetComponent<Camera>();
-        dialogCanvas.worldCamera = camera;
-
-        var buttons = dialogCanvas.GetComponentsInChildren<UnityEngine.UI.Button>();
-
-        buttons[0].onClick.AddListener(onYesButtonClickedCallback);
-        buttons[1].onClick.AddListener(onNoButtonClickedCallback);
     }
 
     private void onYesButtonClickedCallback()
     {
         Debug.Log(DEBUG_MARK + "dailog YES button clicked!");
+        var videoPath = Path.Combine(Application.streamingAssetsPath, storyVideoPath);
+
+        if (File.Exists("file.txt"))
+        {
+            Handheld.PlayFullScreenMovie("file://" + videoPath);
+            Destroy(this);
+        }
     }
 
     private void onNoButtonClickedCallback()

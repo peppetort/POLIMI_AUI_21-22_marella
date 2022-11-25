@@ -202,3 +202,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: {fileID: 429346471073634996, guid: 7c0ab6af1165242fe8e0bb0106273cbb, type: 3}
+  storyVideoPath: test_story.mp4

@@ -39,17 +39,27 @@ public class MarkerObjectsManager : MonoBehaviour
     {
         foreach (var trackedImage in eventArgs.added)
         {
-            Debug.Log(DEBUG_MARK + trackedImage.referenceImage.name);
-
             var markerName = trackedImage.referenceImage.name;
             GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
-
             if (markerObject == null)
                 return;
-
             markerToCharacterInstancesMap[markerName] = Instantiate(markerObject, trackedImage.transform);
             Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
         }
+
+
+        foreach (var trackedImage in eventArgs.updated)
+        {
+            var markerName = trackedImage.referenceImage.name;
+
+            if (markerToCharacterInstancesMap[markerName] != null)
+                return;
+
+            GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
+            markerToCharacterInstancesMap[markerName] = Instantiate(markerObject, trackedImage.transform);
+            Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
+        }
+
 
         foreach (var trackedImage in eventArgs.removed)
         {

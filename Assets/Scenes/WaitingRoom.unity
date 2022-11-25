@@ -1165,6 +1165,7 @@ MonoBehaviour:
   trackedImagesManager: {fileID: 0}
   characheterGameObjectList:
   - {fileID: 1521539475015914560, guid: 2f5c5272c2bbd47728a4ff8cf516d89d, type: 3}
+  - {fileID: 622571075959352644, guid: ac8992812188743aea12cceac22922c2, type: 3}
 --- !u!114 &1659859604
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -101,10 +101,10 @@ public class Character : MonoBehaviour
         Debug.Log(DEBUG_MARK + "dailog YES button clicked!");
         var videoPath = Path.Combine(Application.streamingAssetsPath, storyVideoPath);
 
-        if (File.Exists("file.txt"))
+        if (File.Exists(videoPath))
         {
             Handheld.PlayFullScreenMovie("file://" + videoPath);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

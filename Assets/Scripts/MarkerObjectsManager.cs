@@ -6,17 +6,16 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 
-[RequireComponent(typeof(ARTrackedImageManager))]
 public class MarkerObjectsManager : MonoBehaviour
 {
     private string DEBUG_MARK = "[DEBUG][MarkerObjectsManager] ";
+
+    [SerializeField]
     public ARTrackedImageManager trackedImagesManager;
+    [SerializeField]
+    public List<GameObject> characheterGameObjectList;
 
-    public List<GameObject> ARGameObjects;
-
-    private List<GameObject> showedCharacters = new List<GameObject>();
-
-    private Dictionary<string, GameObject> markerToCharacterMap = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> markerToCharacterInstancesMap = new Dictionary<string, GameObject>();
 
     void Awake()
     {
@@ -40,32 +39,24 @@ public class MarkerObjectsManager : MonoBehaviour
     {
         foreach (var trackedImage in eventArgs.added)
         {
-            if (ARGameObjects.Count == 0)
+            Debug.Log(DEBUG_MARK + trackedImage.referenceImage.name);
+
+            var markerName = trackedImage.referenceImage.name;
+            GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
+
+            if (markerObject == null)
                 return;
 
-
-            // pick random element from available Characters and instantiate it 
-            int randomCharacterIndex = Random.Range(0, ARGameObjects.Count - 1);
-            var selectedCharacter = ARGameObjects[randomCharacterIndex];
-            var instance = Instantiate(selectedCharacter, trackedImage.transform);
-
-
-            //selectedCharacter.instantiate(trackedImage.transform);
-
-            // associate character to the marker
-            var markerName = trackedImage.referenceImage.name;
-            markerToCharacterMap[markerName] = instance;
-
-            Debug.Log(DEBUG_MARK + instance.name + " associated to " + markerName);
-
-            // remove character from avaialble
-            ARGameObjects.RemoveAt(randomCharacterIndex);
+            markerToCharacterInstancesMap[markerName] = Instantiate(markerObject, trackedImage.transform);
+            Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
         }
 
         foreach (var trackedImage in eventArgs.removed)
         {
             var markerName = trackedImage.referenceImage.name;
-            Destroy(markerToCharacterMap[markerName]);
+            GameObject objectInstance = markerToCharacterInstancesMap[markerName];
+            Destroy(objectInstance);
+            Debug.Log(DEBUG_MARK + objectInstance.name + " destroyed!");
         }
     }
 }

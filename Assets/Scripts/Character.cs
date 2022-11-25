@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -42,6 +43,15 @@ public class Character : MonoBehaviour
 
         dialog.SetActive(false);
         dialog = Instantiate(dialog, gameObject.transform);
+        dialog.transform.localScale += new Vector3(-0.99f, -0.99f, -0.99f);
+        dialog.transform.Rotate(0f, 180f, 0f);
+        var boundsCenter = renderer.bounds.center;
+        var boundsMin = renderer.bounds.min;
+        var x = Math.Abs(boundsCenter.x - boundsMin.x);
+        var y = Math.Abs(boundsCenter.y - boundsMin.y);
+        var z = Math.Abs(boundsCenter.z - boundsMin.z);
+        dialog.transform.Translate(x + 0.02f, y, -z);
+
 
         var dialogCanvas = dialog.GetComponentInChildren(typeof(Canvas)) as Canvas;
         var camera = GameObject.Find("AR Camera").GetComponent<Camera>();
@@ -103,7 +113,7 @@ public class Character : MonoBehaviour
 
         if (File.Exists(videoPath))
         {
-            Handheld.PlayFullScreenMovie("file://" + videoPath);
+            Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Minimal);
             Destroy(gameObject);
         }
     }

@@ -43,15 +43,8 @@ public class Character : MonoBehaviour
 
         dialog.SetActive(false);
         dialog = Instantiate(dialog, gameObject.transform);
-        dialog.transform.localScale += new Vector3(-0.99f, -0.99f, -0.99f);
-        dialog.transform.Rotate(0f, 180f, 0f);
-        var boundsCenter = renderer.bounds.center;
-        var boundsMin = renderer.bounds.min;
-        var x = Math.Abs(boundsCenter.x - boundsMin.x);
-        var y = Math.Abs(boundsCenter.y - boundsMin.y);
-        var z = Math.Abs(boundsCenter.z - boundsMin.z);
-        dialog.transform.Translate(x + 0.02f, y, -z);
-
+        var z = renderer.bounds.size.z;
+        dialog.transform.Translate(0, -0.02f, z * 0.7f);
 
         var dialogCanvas = dialog.GetComponentInChildren(typeof(Canvas)) as Canvas;
         var camera = GameObject.Find("AR Camera").GetComponent<Camera>();

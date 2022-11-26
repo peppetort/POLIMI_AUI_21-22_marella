@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 
 public class ObjectSpawnManager : MonoBehaviour
 {
+    private string DEBUG_MARK = "[DEBUG][ObjectSpawnManager]";
+
     [SerializeField]
     ARRaycastManager m_RaycastManager;
     [SerializeField]
@@ -40,21 +42,24 @@ public class ObjectSpawnManager : MonoBehaviour
         // pick random screen coordinates
         Vector2 randomScreenPosition = new Vector2(Random.Range(0.0f, Screen.height), Random.Range(0.0f, Screen.width));
 
-        RaycastHit hit;
         if (m_RaycastManager.Raycast(randomScreenPosition, m_Hits))
         {
-
-            Ray ray = arCam.ScreenPointToRay(m_Hits[m_Hits.Count - 1].pose.position);
-            if (Physics.Raycast(ray, out hit))
+            foreach (var hit in m_Hits)
             {
-                SpawnRandomPrefab(m_Hits[m_Hits.Count - 1].pose.position);
+                if (hit.hitType == TrackableType.PlaneWithinBounds)
+                {
+                    bool hasBeenSpawned = SpawnRandomPrefab(m_Hits[m_Hits.Count - 1].pose.position);
 
+                    if (hasBeenSpawned)
+                        return;
+                }
             }
 
         }
     }
 
-    private void SpawnRandomPrefab(Vector3 spawnPosition)
+
+    private bool SpawnRandomPrefab(Vector3 spawnPosition)
     {
         // pick random prefab from spawnable list
         var random = new System.Random();
@@ -71,11 +76,11 @@ public class ObjectSpawnManager : MonoBehaviour
                 // discard if distance is lower than the minum need inside a group
                 if (distance < OBJECT_MIN_DISTANCE_CATEGORY)
                 {
-                    return;
+                    return false;
                 }
                 if (spawnedObjectNearTagMap[entry.Key].Contains(selectedPrefab.tag))
                 {
-                    return;
+                    return false;
                 }
             }
         }
@@ -88,6 +93,7 @@ public class ObjectSpawnManager : MonoBehaviour
         newPrefab.transform.localScale += scaleChange;
         newPrefab.transform.Rotate(0f, 180f, 0f);
         spawnablePrefabList.RemoveAt(index);
+        return true;
     }
 }
 

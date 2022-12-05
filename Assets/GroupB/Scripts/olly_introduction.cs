@@ -15,6 +15,7 @@ public class olly_introduction : MonoBehaviour
 {
     public AudioClip[] audioClips;
     public GameObject CanvasAnimals;
+    public GameObject filters; // button to switch camera 
 
     AudioSource audioSource;
     private IEnumerator olly_routine_introduction;
@@ -35,7 +36,16 @@ public class olly_introduction : MonoBehaviour
         if (audioStatus == AudioStatus.Animals)
             CanvasAnimals.SetActive(true);
         else
+        {
             CanvasAnimals.SetActive(false);
+            if(audioStatus == AudioStatus.FiltersIntro)
+            {
+                filters.SetActive(true); // to show the button
+            }
+
+            
+        }
+            
     }
     private IEnumerator ReproduceAudio()
     {

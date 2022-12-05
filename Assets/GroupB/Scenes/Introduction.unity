@@ -420,7 +420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!222 &150776508
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2719,7 +2719,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9750e935e29610342b54faf3278f1185, type: 3}
   - {fileID: 8300000, guid: 878211ed0d2c1be41b5a1a95eefca446, type: 3}
   CanvasAnimals: {fileID: 2021617544}
-  filters: {fileID: 1520273407}
+  filters: {fileID: 1163653636}
 --- !u!95 &1338797647840066581
 Animator:
   serializedVersion: 4

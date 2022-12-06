@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23846894997245662}
   m_Layer: 0
   m_Name: Shell_02
-  m_TagString: animal
+  m_TagString: vertical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

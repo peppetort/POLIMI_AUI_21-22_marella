@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23665216823078042}
   m_Layer: 0
   m_Name: Seaweed_02
-  m_TagString: plant
+  m_TagString: horizontal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

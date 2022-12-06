@@ -15,7 +15,9 @@ public class MarkerObjectsManager : MonoBehaviour
     [SerializeField]
     public List<GameObject> characheterGameObjectList;
 
-    private Dictionary<string, GameObject> markerToCharacterInstancesMap = new Dictionary<string, GameObject>();
+    //private Dictionary<string, GameObject> markerToCharacterInstancesMap = new Dictionary<string, GameObject>();
+    private GameObject instantiatedCharacter;
+    private string instantiatedMarkerName;
 
     void Awake()
     {
@@ -43,7 +45,12 @@ public class MarkerObjectsManager : MonoBehaviour
             GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
             if (markerObject == null)
                 return;
-            markerToCharacterInstancesMap[markerName] = Instantiate(markerObject, trackedImage.transform);
+
+            if (instantiatedCharacter != null)
+                Destroy(instantiatedCharacter);
+
+            instantiatedCharacter = Instantiate(markerObject, trackedImage.transform);
+            instantiatedMarkerName = markerName;
             Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
         }
 
@@ -52,21 +59,26 @@ public class MarkerObjectsManager : MonoBehaviour
         {
             var markerName = trackedImage.referenceImage.name;
 
-            if (markerToCharacterInstancesMap[markerName] != null)
+            if (instantiatedMarkerName == markerName)
                 return;
 
+            if (instantiatedCharacter != null)
+                Destroy(instantiatedCharacter);
+
             GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
-            markerToCharacterInstancesMap[markerName] = Instantiate(markerObject, trackedImage.transform);
+            instantiatedCharacter = Instantiate(markerObject, trackedImage.transform);
+            instantiatedMarkerName = markerName;
+
             Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
         }
 
 
         foreach (var trackedImage in eventArgs.removed)
         {
-            var markerName = trackedImage.referenceImage.name;
-            GameObject objectInstance = markerToCharacterInstancesMap[markerName];
-            Destroy(objectInstance);
-            Debug.Log(DEBUG_MARK + objectInstance.name + " destroyed!");
+            Destroy(instantiatedCharacter);
+            instantiatedMarkerName = null;
+
+            Debug.Log(DEBUG_MARK + instantiatedCharacter.name + " destroyed!");
         }
     }
 }

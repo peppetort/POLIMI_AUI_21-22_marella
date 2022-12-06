@@ -16,8 +16,8 @@ public class MarkerObjectsManager : MonoBehaviour
     public List<GameObject> characheterGameObjectList;
 
     //private Dictionary<string, GameObject> markerToCharacterInstancesMap = new Dictionary<string, GameObject>();
-    private GameObject instantiatedCharacter;
-    private string instantiatedMarkerName;
+    public static GameObject instantiatedCharacter;
+    public static string instantiatedMarkerName;
 
     void Awake()
     {

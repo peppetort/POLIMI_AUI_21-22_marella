@@ -78,7 +78,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
         var filteredPrefabs = spawnablePrefabList.Where(o => o.tag == filterTag).ToList();
         if (filteredPrefabs.Count == 0)
-            return;
+            return false;
         var random = new System.Random();
         int index = random.Next(filteredPrefabs.Count);
         GameObject selectedPrefab = filteredPrefabs[index];

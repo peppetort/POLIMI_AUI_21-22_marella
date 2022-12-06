@@ -4,7 +4,8 @@ using UnityEngine;
 
 enum AudioStatus
 {
-    Start, // introduction to the new world
+    Start,
+    Intro, // introduction to the new world
     Environemnt, // explanation of which animals the kid can interact with
     Characters, // explanation of the switch camera button
     Filters, // explanation of how the filters work
@@ -31,9 +32,7 @@ public class AssistantIntroduction : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.PlayOneShot(introAudio);
         animator.Play("Idle");
-        Debug.Log(DEBUG_MARK + audioStatus);
     }
 
     // Update is called once per frame
@@ -44,6 +43,11 @@ public class AssistantIntroduction : MonoBehaviour
             switch (audioStatus)
             {
                 case AudioStatus.Start:
+                    audioSource.PlayOneShot(introAudio);
+                    audioStatus = AudioStatus.Intro;
+                    Debug.Log(DEBUG_MARK + audioStatus);
+                    break;
+                case AudioStatus.Intro:
                     audioSource.PlayOneShot(environmentAudio);
                     audioStatus = AudioStatus.Environemnt;
                     Debug.Log(DEBUG_MARK + audioStatus);

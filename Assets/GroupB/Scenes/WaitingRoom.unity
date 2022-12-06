@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cda9d5e297d242048ae046c410a97a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHelpAudio: {fileID: 8300000, guid: 3b2cd461f7ee64dc9954a475df742838, type: 3}
+  characterHelpAudio: {fileID: 8300000, guid: 48d9edc5abdb84a6e9967140869bebe5, type: 3}
   environmentHelpAudio: {fileID: 8300000, guid: 7e05eede487084019806d8ebb7dea0c9,
     type: 3}
 --- !u!82 &977949556

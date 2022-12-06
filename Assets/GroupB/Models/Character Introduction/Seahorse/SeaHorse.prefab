@@ -106,26 +106,6 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 5add82fc1450bdb4e9166b3c7b270685, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 7c32de18ce53d4302972d1669912c605, type: 2}
+      objectReference: {fileID: 9100000, guid: 9bb7950ed70d44bddaaf7bbe27eed441, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5add82fc1450bdb4e9166b3c7b270685, type: 3}
---- !u!1 &7239643220696090694 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100012, guid: 5add82fc1450bdb4e9166b3c7b270685,
-    type: 3}
-  m_PrefabInstance: {fileID: 7239643220695994090}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &136253700875920531
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7239643220696090694}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.4408063
-  m_Height: 2.1231935
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.2405745, z: -0.05309245}

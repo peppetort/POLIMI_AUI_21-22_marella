@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: bf36433e28abd1344bf867d3559ef329, type: 3}
       propertyPath: m_Name
-      value: Orca
+      value: Killerwhale
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: bf36433e28abd1344bf867d3559ef329, type: 3}
       propertyPath: m_Layer
@@ -114,26 +114,6 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: bf36433e28abd1344bf867d3559ef329, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 64d0a3cd5b1bc4ebba0cfcb90e39f812, type: 2}
+      objectReference: {fileID: 9100000, guid: b417e8d5284134ef69f7d6c17e0687e3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf36433e28abd1344bf867d3559ef329, type: 3}
---- !u!1 &7426156062943546383 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100010, guid: bf36433e28abd1344bf867d3559ef329,
-    type: 3}
-  m_PrefabInstance: {fileID: 7426156062943513253}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &136528830903305746
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7426156062943546383}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.84815955
-  m_Height: 4.912852
-  m_Direction: 2
-  m_Center: {x: 0, y: 1.1228926, z: 0.028534174}

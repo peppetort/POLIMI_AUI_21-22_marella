@@ -77,8 +77,10 @@ public class ObjectSpawnManager : MonoBehaviour
 
 
         var filteredPrefabs = spawnablePrefabList.Where(o => o.tag == filterTag).ToList();
+        if (filteredPrefabs.Count == 0)
+            return;
         var random = new System.Random();
-        int index = random.Next(spawnablePrefabList.Count);
+        int index = random.Next(filteredPrefabs.Count);
         GameObject selectedPrefab = filteredPrefabs[index];
 
         // check distance between selected position and the ones already in the scene in order to distriute them all over the scene

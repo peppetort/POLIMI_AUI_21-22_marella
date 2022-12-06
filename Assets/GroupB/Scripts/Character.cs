@@ -107,7 +107,7 @@ public class Character : MonoBehaviour
         if (File.Exists(videoPath))
         {
             Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Minimal);
-            Destroy(gameObject);
+            dialog.SetActive(false);
         }
     }
 

@@ -21,7 +21,6 @@ public class AssistantIntroduction : MonoBehaviour
     public AudioClip endAudio;
 
     public GameObject characters;
-
     AudioSource audioSource;
 
     private AudioStatus audioStatus = AudioStatus.Start;
@@ -66,7 +65,9 @@ public class AssistantIntroduction : MonoBehaviour
                     audioStatus = AudioStatus.End;
                     Debug.Log(DEBUG_MARK + audioStatus);
                     break;
-                    //TODO: case AudioStatus.End dialog 
+                case AudioStatus.End:
+                    SceneSwitcher.loadMainScene();
+                    break;
             }
         }
 

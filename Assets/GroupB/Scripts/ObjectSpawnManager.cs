@@ -22,7 +22,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
     const float OBJECT_MIN_DISTANCE = 0.1f;
 
-    private Vector3 scaleChange = new Vector3(-0.5f, -0.5f, -0.5f);
+    private Vector3 scaleChange = new Vector3(-0.9f, -0.9f, -0.9f);
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +37,15 @@ public class ObjectSpawnManager : MonoBehaviour
         if (spawnablePrefabList.Count == 0)
             return;
 
-
         if (Input.touchCount == 0)
             return;
 
-        var touchPosition = Input.GetTouch(0).position;
+        Touch touch = Input.GetTouch(0);
+        if (touch.phase != TouchPhase.Ended)
+            return;
+
+
+        var touchPosition = touch.position;
 
 
         if (m_RaycastManager.Raycast(touchPosition, m_Hits, TrackableType.PlaneWithinPolygon))
@@ -50,10 +54,13 @@ public class ObjectSpawnManager : MonoBehaviour
             foreach (var hit in m_Hits)
             {
                 ARPlane plane = hit.trackable as ARPlane;
+
                 bool res = SpawnRandomPrefab(hit.pose.position, plane.alignment);
 
                 if (res)
+                {
                     return;
+                }
 
 
             }
@@ -94,7 +101,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
         var newPrefab = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
         newPrefab.transform.localScale += scaleChange;
-        newPrefab.transform.Rotate(0f, 180f, 0f);
+        //newPrefab.transform.Rotate(0f, 180f, 0f);
         spawnedObjectPositionMap[selectedPrefab] = spawnPosition;
         spawnablePrefabList.RemoveAll(o => o.name == selectedPrefab.name);
         return true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 enum AssistantStatus
 {
@@ -12,6 +13,7 @@ public class Assistant : MonoBehaviour
     private string DEBUG_MARK = "[DEBUG][Assistant] ";
     public AudioClip characterHelpAudio;
     public AudioClip environmentHelpAudio;
+    public AudioClip filterHelpAudio;
 
     private AssistantStatus assistantStatus = AssistantStatus.Idle;
 
@@ -40,23 +42,37 @@ public class Assistant : MonoBehaviour
 
     private AudioClip selectHelperAudio()
     {
-        if (MarkerObjectsManager.instantiatedCharacter == null)
-            return environmentHelpAudio;
-        GameObject instantiatedCharacter = MarkerObjectsManager.instantiatedCharacter;
-        Renderer renderer = instantiatedCharacter.GetComponentInChildren<Renderer>();
-        if (renderer.isVisible)
+        Scene scene = SceneSwitcher.getCurrentScene();
+
+        if (scene.buildIndex == (int)Scenes.MAIN)
         {
-            return characterHelpAudio;
+            if (MarkerObjectsManager.instantiatedCharacter == null)
+                return environmentHelpAudio;
+            GameObject instantiatedCharacter = MarkerObjectsManager.instantiatedCharacter;
+            Renderer renderer = instantiatedCharacter.GetComponentInChildren<Renderer>();
+            if (renderer.isVisible)
+            {
+                return characterHelpAudio;
+            }
+            else
+            {
+                return environmentHelpAudio;
+            }
         }
-        else
+        else if (scene.buildIndex == (int)Scenes.FILTER)
         {
-            return environmentHelpAudio;
+            return filterHelpAudio;
         }
+        return null;
     }
 
     public void OnMouseDown()
     {
         var helperAudio = selectHelperAudio();
+
+        if (helperAudio == null)
+            return;
+
         if (assistantStatus != AssistantStatus.Talking)
         {
             animator.enabled = true;

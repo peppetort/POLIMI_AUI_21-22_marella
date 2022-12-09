@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/GroupB/Scenes/WaitingRoom.unity
     guid: 6bdce89659816455b9f906fc62d19910
   - enabled: 1
-    path: Assets/GroupB/Scenes/FrontCamera.unity
+    path: Assets/GroupB/Scenes/FaceFilters.unity
     guid: 041f2c310b922be439f9941ea598a6ae
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,

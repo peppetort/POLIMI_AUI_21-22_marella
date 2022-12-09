@@ -27,4 +27,8 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene((int)Scenes.FILTER);
     }
+
+    public static Scene getCurrentScene(){
+        return SceneManager.GetActiveScene();
+    }
 }

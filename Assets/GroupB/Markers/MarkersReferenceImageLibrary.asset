@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: MarkersReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5726698298513710573
+  m_GuidHigh: 2053086723132381875
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5119061932802289713
+      m_GuidHigh: 8026160956378153101
+    m_SerializedTextureGuid:
+      m_GuidLow: 8387282369837936069
+      m_GuidHigh: 10330100564981273545
+    m_Size: {x: 0.085, y: 0.050291665}
+    m_SpecifySize: 1
+    m_Name: clownfish
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4954971987811739930
+      m_GuidHigh: 5765312336123813532
+    m_SerializedTextureGuid:
+      m_GuidLow: 15318933455228134932
+      m_GuidHigh: 14817024573092228554
+    m_Size: {x: 0.085, y: 0.060136743}
+    m_SpecifySize: 1
+    m_Name: seagull
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4831834374972005166
+      m_GuidHigh: 14491798621036478654
+    m_SerializedTextureGuid:
+      m_GuidLow: 15313581172935402956
+      m_GuidHigh: 16030245342934537947
+    m_Size: {x: 0.085, y: 0.05308073}
+    m_SpecifySize: 1
+    m_Name: turtle
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5707381345865521727
+      m_GuidHigh: 18117284225374315682
+    m_SerializedTextureGuid:
+      m_GuidLow: 8238437938506796621
+      m_GuidHigh: 13714027298518233642
+    m_Size: {x: 0.085, y: 0.10061652}
+    m_SpecifySize: 1
+    m_Name: squid
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4655411849660458152
+      m_GuidHigh: 3264647271216999323
+    m_SerializedTextureGuid:
+      m_GuidLow: 3401551044237817463
+      m_GuidHigh: 1699434938892309225
+    m_Size: {x: 0.085, y: 0.07878438}
+    m_SpecifySize: 1
+    m_Name: killerwhale
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5553497010525016027
+      m_GuidHigh: 5046339599328983471
+    m_SerializedTextureGuid:
+      m_GuidLow: 9513038336205082075
+      m_GuidHigh: 5275154444849674040
+    m_Size: {x: 0.085, y: 0.121532954}
+    m_SpecifySize: 1
+    m_Name: seahorse
+    m_Texture: {fileID: 0}

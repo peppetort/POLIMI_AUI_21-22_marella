@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100010, guid: bf36433e28abd1344bf867d3559ef329, type: 3}
       propertyPath: m_Name
-      value: orca
+      value: killerwhale
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: bf36433e28abd1344bf867d3559ef329, type: 3}
       propertyPath: m_RootOrder
@@ -202,4 +202,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: {fileID: 429346471073634996, guid: 7c0ab6af1165242fe8e0bb0106273cbb, type: 3}
-  storyVideoPath: test_story.mp4
+  storyVideoPath: clownfish_story.mp4

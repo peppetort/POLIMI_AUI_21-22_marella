@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-enum AudioStatus
+public enum AudioStatus
 {
     Start,
     Intro, // introduction to the new world
@@ -12,16 +14,59 @@ enum AudioStatus
     End, // There are not more info
 }
 
+[System.Serializable]
+public class AssistantIntroText
+{
+    public string start;
+    public string intro;
+    public string environment;
+    public string character;
+    public string filters;
+    public string end;
+
+    public static AssistantIntroText CreateFromJSON(string jsonString)
+    {
+        return JsonUtility.FromJson<AssistantIntroText>(jsonString);
+    }
+
+    public string getTextFromAudioStatus(AudioStatus status)
+    {
+        switch (status)
+        {
+            case AudioStatus.Start:
+                return start;
+            case AudioStatus.Intro:
+                return intro;
+            case AudioStatus.Environemnt:
+                return environment;
+            case AudioStatus.Characters:
+                return character;
+            case AudioStatus.Filters:
+                return filters;
+            case AudioStatus.End:
+                return end;
+        }
+        return "";
+    }
+}
+
 public class AssistantIntroduction : MonoBehaviour
 {
     private string DEBUG_MARK = "[DEBUG][AssistantIntroduction] ";
+
     public AudioClip introAudio;
     public AudioClip environmentAudio;
     public AudioClip characterAudio;
     public AudioClip filterAudio;
     public AudioClip endAudio;
-
+    public GameObject dialogPanel;
+    public GameObject dialogTextObject;
+    public TextAsset textAsset;
     public GameObject characters;
+
+    private TMP_Text dialogText;
+    private AssistantIntroText introText;
+
     AudioSource audioSource;
 
     private AudioStatus audioStatus = AudioStatus.Start;
@@ -32,7 +77,9 @@ public class AssistantIntroduction : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        dialogText = dialogTextObject.GetComponent<TMP_Text>();
         animator.Play("Idle");
+        introText = AssistantIntroText.CreateFromJSON(textAsset.text);
     }
 
     // Update is called once per frame
@@ -73,6 +120,7 @@ public class AssistantIntroduction : MonoBehaviour
                     SceneSwitcher.loadMainScene();
                     break;
             }
+            dialogText.text = introText.getTextFromAudioStatus(audioStatus);
         }
 
     }

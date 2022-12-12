@@ -2,18 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 enum AssistantStatus
 {
     Idle,
     Talking,
 }
+
+public enum HelpStatus
+{
+    Character,
+    Environment,
+    Filters
+}
+
+[System.Serializable]
+public class AssistantHelpText
+{
+    public string environment;
+    public string character;
+    public string filters;
+
+    public static AssistantHelpText CreateFromJSON(string jsonString)
+    {
+        return JsonUtility.FromJson<AssistantHelpText>(jsonString);
+    }
+}
+
 public class Assistant : MonoBehaviour
 {
     private string DEBUG_MARK = "[DEBUG][Assistant] ";
     public AudioClip characterHelpAudio;
     public AudioClip environmentHelpAudio;
     public AudioClip filterHelpAudio;
+    public GameObject dialogPanel;
+    public GameObject dialogTextObject;
+    public TextAsset textAsset;
+
+    private TMP_Text dialogText;
+    private AssistantIntroText introText;
 
     private AssistantStatus assistantStatus = AssistantStatus.Idle;
 
@@ -23,9 +52,12 @@ public class Assistant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogPanel.SetActive(false);
         animator = gameObject.GetComponent<Animator>();
         animator.enabled = false;
         audioSource = GetComponent<AudioSource>();
+        dialogText = dialogTextObject.GetComponent<TMP_Text>();
+        introText = AssistantIntroText.CreateFromJSON(textAsset.text);
     }
 
     // Update is called once per frame
@@ -33,6 +65,7 @@ public class Assistant : MonoBehaviour
     {
         if (assistantStatus == AssistantStatus.Talking && !audioSource.isPlaying)
         {
+            dialogPanel.SetActive(false);
             assistantStatus = AssistantStatus.Idle;
             Debug.Log(DEBUG_MARK + assistantStatus);
             animator.enabled = false;
@@ -40,44 +73,61 @@ public class Assistant : MonoBehaviour
 
     }
 
-    private AudioClip selectHelperAudio()
+    private HelpStatus selectHelperStatus()
     {
         Scene scene = SceneSwitcher.getCurrentScene();
 
         if (scene.buildIndex == (int)Scenes.MAIN)
         {
             if (MarkerObjectsManager.instantiatedCharacter == null)
-                return environmentHelpAudio;
+                return HelpStatus.Environment;
             GameObject instantiatedCharacter = MarkerObjectsManager.instantiatedCharacter;
             Renderer renderer = instantiatedCharacter.GetComponentInChildren<Renderer>();
             if (renderer.isVisible)
             {
-                return characterHelpAudio;
+                return HelpStatus.Character;
             }
             else
             {
-                return environmentHelpAudio;
+                return HelpStatus.Environment;
             }
         }
         else if (scene.buildIndex == (int)Scenes.FILTER)
         {
-            return filterHelpAudio;
+            return HelpStatus.Filters;
         }
-        return null;
+        return HelpStatus.Environment;
+    }
+
+    private void startHelping(HelpStatus helpStatus)
+    {
+        switch (helpStatus)
+        {
+            case HelpStatus.Character:
+                audioSource.PlayOneShot(characterHelpAudio);
+                dialogText.text = introText.character;
+                break;
+            case HelpStatus.Environment:
+                audioSource.PlayOneShot(environmentHelpAudio);
+                dialogText.text = introText.environment;
+                break;
+            case HelpStatus.Filters:
+                audioSource.PlayOneShot(filterHelpAudio);
+                dialogText.text = introText.filters;
+                break;
+        }
     }
 
     public void OnMouseDown()
     {
-        var helperAudio = selectHelperAudio();
-
-        if (helperAudio == null)
-            return;
+        var helperStatus = selectHelperStatus();
 
         if (assistantStatus != AssistantStatus.Talking)
         {
+            dialogPanel.SetActive(true);
             animator.enabled = true;
             animator.Play("Jump");
-            audioSource.PlayOneShot(helperAudio);
+            startHelping(helperStatus);
             assistantStatus = AssistantStatus.Talking;
             Debug.Log(DEBUG_MARK + assistantStatus);
         }

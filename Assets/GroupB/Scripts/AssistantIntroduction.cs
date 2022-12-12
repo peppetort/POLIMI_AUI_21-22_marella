@@ -63,6 +63,7 @@ public class AssistantIntroduction : MonoBehaviour
     public GameObject dialogTextObject;
     public TextAsset textAsset;
     public GameObject characters;
+    public GameObject arrow;
 
     private TMP_Text dialogText;
     private AssistantIntroText introText;
@@ -80,6 +81,7 @@ public class AssistantIntroduction : MonoBehaviour
         dialogText = dialogTextObject.GetComponent<TMP_Text>();
         animator.Play("Idle");
         introText = AssistantIntroText.CreateFromJSON(textAsset.text);
+        arrow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -107,12 +109,14 @@ public class AssistantIntroduction : MonoBehaviour
                     break;
                 case AudioStatus.Characters:
                     characters.SetActive(false);
+                    arrow.SetActive(true);
                     audioSource.PlayOneShot(filterAudio);
                     audioStatus = AudioStatus.Filters;
                     Debug.Log(DEBUG_MARK + audioStatus);
                     break;
                 case AudioStatus.Filters:
                     audioSource.PlayOneShot(endAudio);
+                    arrow.SetActive(false);
                     audioStatus = AudioStatus.End;
                     Debug.Log(DEBUG_MARK + audioStatus);
                     break;

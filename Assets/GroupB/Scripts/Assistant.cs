@@ -40,6 +40,7 @@ public class Assistant : MonoBehaviour
     public GameObject dialogPanel;
     public GameObject dialogTextObject;
     public TextAsset textAsset;
+    public GameObject arrow;
 
     private TMP_Text dialogText;
     private AssistantIntroText introText;
@@ -52,6 +53,8 @@ public class Assistant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(arrow != null)
+            arrow.SetActive(false);
         dialogPanel.SetActive(false);
         animator = gameObject.GetComponent<Animator>();
         animator.enabled = false;
@@ -69,6 +72,7 @@ public class Assistant : MonoBehaviour
             assistantStatus = AssistantStatus.Idle;
             Debug.Log(DEBUG_MARK + assistantStatus);
             animator.enabled = false;
+            arrow.SetActive(false);
         }
 
     }
@@ -112,6 +116,7 @@ public class Assistant : MonoBehaviour
                 dialogText.text = introText.environment;
                 break;
             case HelpStatus.Filters:
+                arrow.SetActive(true);
                 audioSource.PlayOneShot(filterHelpAudio);
                 dialogText.text = introText.filters;
                 break;

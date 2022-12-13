@@ -35,6 +35,9 @@ public class MarkerObjectsManager : MonoBehaviour
     {
         // remove event handler
         trackedImagesManager.trackedImagesChanged -= OnTrackedImagesChanged;
+        if (instantiatedCharacter != null)
+            Destroy(instantiatedCharacter);
+        instantiatedMarkerName = null;
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -57,6 +60,22 @@ public class MarkerObjectsManager : MonoBehaviour
 
         foreach (var trackedImage in eventArgs.updated)
         {
+            if (trackedImage.trackingState == TrackingState.Limited)
+            {
+                // probably the marker is outside the camera or in general poor traking info
+                if (instantiatedCharacter == null)
+                    return;
+                Character character = instantiatedCharacter.GetComponent<Character>();
+                if (character.interactionStatus == InteractionStatus.Ready)
+                {
+
+                    Destroy(instantiatedCharacter);
+                    instantiatedMarkerName = null;
+                    return;
+                }
+
+            }
+
             var markerName = trackedImage.referenceImage.name;
 
             if (instantiatedMarkerName == markerName)
@@ -75,7 +94,8 @@ public class MarkerObjectsManager : MonoBehaviour
 
         foreach (var trackedImage in eventArgs.removed)
         {
-            Destroy(instantiatedCharacter);
+            if (instantiatedCharacter != null)
+                Destroy(instantiatedCharacter);
             instantiatedMarkerName = null;
 
             Debug.Log(DEBUG_MARK + instantiatedCharacter.name + " destroyed!");

@@ -1136,6 +1136,7 @@ MonoBehaviour:
   dialogPanel: {fileID: 1191983041}
   dialogTextObject: {fileID: 362189184}
   textAsset: {fileID: 4900000, guid: 1cf439aa943804c87a36845a692dfca9, type: 3}
+  arrow: {fileID: 0}
 --- !u!82 &977949556
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1530,7 +1531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -658.29, y: -335.82004}
+  m_AnchoredPosition: {x: -658.2899, y: -335.82007}
   m_SizeDelta: {x: -1388.81, y: -1198.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191983043
@@ -2185,7 +2186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedLibrary: {fileID: 11400000, guid: d17d7054c22894d7b86874d021a60ac9,
     type: 2}
-  m_MaxNumberOfMovingImages: 2
+  m_MaxNumberOfMovingImages: 1
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &1710315436
 GameObject:

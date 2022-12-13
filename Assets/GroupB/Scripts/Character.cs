@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Video;
 
 // keep the status of the interaction
-enum InteractionStatus
+public enum InteractionStatus
 {
     Ready,
     Talking,
@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
     private new Renderer renderer;
 
 
-    private InteractionStatus interactionStatus = InteractionStatus.Ready;
+    public InteractionStatus interactionStatus = InteractionStatus.Ready;
 
     void Start()
     {
@@ -102,18 +102,20 @@ public class Character : MonoBehaviour
     private void onYesButtonClickedCallback()
     {
         Debug.Log(DEBUG_MARK + "dailog YES button clicked!");
+        interactionStatus = InteractionStatus.Ready;
+        dialog.SetActive(false);
         var videoPath = Path.Combine(Application.streamingAssetsPath, storyVideoPath);
 
         if (File.Exists(videoPath))
         {
             Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Minimal);
-            dialog.SetActive(false);
         }
     }
 
     private void onNoButtonClickedCallback()
     {
         Debug.Log(DEBUG_MARK + "dailog NO button clicked!");
+        interactionStatus = InteractionStatus.Ready;
         dialog.SetActive(false);
     }
 }

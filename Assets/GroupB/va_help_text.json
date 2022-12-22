@@ -1,5 +1,15 @@
 {
-      "environment":"Puoi cliccare un punto dello schermo e se sei fortunato una decorazione apparirà",
-      "character": "Hai trovato un simpatico amico! Clccca su di lui per parlargli",
-      "filters": "Bella maschera! Vuoi cambiarla? Tocca uno dei modelli sulla destra"
+  "environment": [
+    "Aiutami a decorare questo ambiente posizionando piante e conchiglie su pavimenti e muri",
+    "Inquadra una superfice e tocca un punto dello schermo",
+    "Se sei fortunato, una decorazione apparirà",
+    "Più esplori, più sarà facile decorare"
+  ],
+  "character": [
+    "Hai trovato un simpatico amico! Clicca su di lui per parlargli"
+  ],
+  "filters": [
+    "Bella maschera! Vuoi cambiarla? Tocca uno dei modelli sulla destra",
+    "Se vuoi tornare indietro, premi il bottone bianco in basso a destra"
+  ]
 }

@@ -2184,11 +2184,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf447afd619148c8bdb7673e349ea82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introAudio: {fileID: 8300000, guid: 734f3118dfcbc4e6997c4912cdc69d15, type: 3}
-  environmentAudio: {fileID: 8300000, guid: 7e05eede487084019806d8ebb7dea0c9, type: 3}
-  characterAudio: {fileID: 8300000, guid: 3b2cd461f7ee64dc9954a475df742838, type: 3}
-  filterAudio: {fileID: 8300000, guid: 6553e7f350345427c822e60d9da83964, type: 3}
-  endAudio: {fileID: 8300000, guid: b43d9136e16c544a8bac48b59db078e1, type: 3}
+  introAudio:
+  - {fileID: 8300000, guid: fe68a09be955e496d82eff3083def9e3, type: 3}
+  - {fileID: 8300000, guid: 3d1b99f7e80da485ca91c09a036c7ddd, type: 3}
+  - {fileID: 8300000, guid: ac0a846de4afe4cd5b00778fbac325a3, type: 3}
+  environmentAudio:
+  - {fileID: 8300000, guid: 8d663d5f941a841be8896986246e016e, type: 3}
+  - {fileID: 8300000, guid: caa5fabca9cec4a25afc24896b0d0d06, type: 3}
+  characterAudio:
+  - {fileID: 8300000, guid: 5861ea259032e4285b3d3d64e399dc15, type: 3}
+  - {fileID: 8300000, guid: b422f2cd767bb4dc093493925e2d3222, type: 3}
+  - {fileID: 8300000, guid: 9e74c10fed48747f2b86ab22ef24ec43, type: 3}
+  filterAudio:
+  - {fileID: 8300000, guid: 6ff6631e4e77b411c95cbd1f5db07255, type: 3}
+  - {fileID: 8300000, guid: 0b678e824a2e94d3d84a82891b4a486d, type: 3}
+  - {fileID: 8300000, guid: df2a680fc4cc6408f927b4d1a3d62fef, type: 3}
+  endAudio:
+  - {fileID: 8300000, guid: 79925b36b397644b9b890bc28275427d, type: 3}
+  - {fileID: 8300000, guid: fe3c39d7dd6c54270a94f58889a05e52, type: 3}
+  - {fileID: 8300000, guid: 3f5db5ee7ed37414e844c5929cd3c531, type: 3}
   dialogPanel: {fileID: 1272771903}
   dialogTextObject: {fileID: 2137030814}
   textAsset: {fileID: 4900000, guid: dddd1dfd927b645f4a18dca113946ecd, type: 3}

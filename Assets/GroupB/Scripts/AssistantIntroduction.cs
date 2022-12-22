@@ -6,7 +6,6 @@ using TMPro;
 
 public enum AudioStatus
 {
-    Start,
     Intro, // introduction to the new world
     Environemnt, // explanation of which animals the kid can interact with
     Characters, // explanation of the switch camera button
@@ -17,36 +16,16 @@ public enum AudioStatus
 [System.Serializable]
 public class AssistantIntroText
 {
-    public string start;
-    public string intro;
-    public string environment;
-    public string character;
-    public string filters;
-    public string end;
+    public List<string> start;
+    public List<string> intro;
+    public List<string> environment;
+    public List<string> character;
+    public List<string> filters;
+    public List<string> end;
 
     public static AssistantIntroText CreateFromJSON(string jsonString)
     {
         return JsonUtility.FromJson<AssistantIntroText>(jsonString);
-    }
-
-    public string getTextFromAudioStatus(AudioStatus status)
-    {
-        switch (status)
-        {
-            case AudioStatus.Start:
-                return start;
-            case AudioStatus.Intro:
-                return intro;
-            case AudioStatus.Environemnt:
-                return environment;
-            case AudioStatus.Characters:
-                return character;
-            case AudioStatus.Filters:
-                return filters;
-            case AudioStatus.End:
-                return end;
-        }
-        return "";
     }
 }
 
@@ -54,11 +33,11 @@ public class AssistantIntroduction : MonoBehaviour
 {
     private string DEBUG_MARK = "[DEBUG][AssistantIntroduction] ";
 
-    public AudioClip introAudio;
-    public AudioClip environmentAudio;
-    public AudioClip characterAudio;
-    public AudioClip filterAudio;
-    public AudioClip endAudio;
+    public List<AudioClip> introAudio;
+    public List<AudioClip> environmentAudio;
+    public List<AudioClip> characterAudio;
+    public List<AudioClip> filterAudio;
+    public List<AudioClip> endAudio;
     public GameObject dialogPanel;
     public GameObject dialogTextObject;
     public TextAsset textAsset;
@@ -70,8 +49,10 @@ public class AssistantIntroduction : MonoBehaviour
 
     AudioSource audioSource;
 
-    private AudioStatus audioStatus = AudioStatus.Start;
+    private AudioStatus audioStatus = AudioStatus.Intro;
     private Animator animator;
+
+    private int audioIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -91,40 +72,82 @@ public class AssistantIntroduction : MonoBehaviour
         {
             switch (audioStatus)
             {
-                case AudioStatus.Start:
-                    audioSource.PlayOneShot(introAudio);
-                    audioStatus = AudioStatus.Intro;
-                    Debug.Log(DEBUG_MARK + audioStatus);
-                    break;
                 case AudioStatus.Intro:
-                    audioSource.PlayOneShot(environmentAudio);
+                    audioSource.PlayOneShot(introAudio[audioIndex]);
+                    dialogText.text = introText.intro[audioIndex];
+                    Debug.Log(DEBUG_MARK + audioStatus + " " + audioIndex);
+
+                    if (audioIndex < introAudio.Count - 1)
+                    {
+                        audioIndex++;
+                        break;
+                    }
+                    audioIndex = 0;
                     audioStatus = AudioStatus.Environemnt;
-                    Debug.Log(DEBUG_MARK + audioStatus);
                     break;
                 case AudioStatus.Environemnt:
-                    characters.SetActive(true);
-                    audioSource.PlayOneShot(characterAudio);
+                    audioSource.PlayOneShot(environmentAudio[audioIndex]);
+                    dialogText.text = introText.environment[audioIndex];
+                    Debug.Log(DEBUG_MARK + audioStatus + " " + audioIndex);
+
+                    if (audioIndex < environmentAudio.Count - 1)
+                    {
+                        audioIndex++;
+                        break;
+                    }
+                    audioIndex = 0;
                     audioStatus = AudioStatus.Characters;
-                    Debug.Log(DEBUG_MARK + audioStatus);
                     break;
                 case AudioStatus.Characters:
+                    characters.SetActive(true);
+                    audioSource.PlayOneShot(characterAudio[audioIndex]);
+                    dialogText.text = introText.character[audioIndex];
+                    Debug.Log(DEBUG_MARK + audioStatus + " " + audioIndex);
+
+                    if (audioIndex < characterAudio.Count - 1)
+                    {
+                        audioIndex++;
+                        break;
+                    }
                     characters.SetActive(false);
-                    arrow.SetActive(true);
-                    audioSource.PlayOneShot(filterAudio);
+                    audioIndex = 0;
                     audioStatus = AudioStatus.Filters;
-                    Debug.Log(DEBUG_MARK + audioStatus);
                     break;
                 case AudioStatus.Filters:
-                    audioSource.PlayOneShot(endAudio);
+                    audioSource.PlayOneShot(filterAudio[audioIndex]);
+                    dialogText.text = introText.filters[audioIndex];
+                    Debug.Log(DEBUG_MARK + audioStatus + " " + audioIndex);
+
+                    if (audioIndex == 1)
+                    {
+                        arrow.SetActive(true);
+                    }
+
+                    if (audioIndex < filterAudio.Count - 1)
+                    {
+                        audioIndex++;
+                        break;
+                    }
+                    audioIndex = 0;
                     arrow.SetActive(false);
                     audioStatus = AudioStatus.End;
-                    Debug.Log(DEBUG_MARK + audioStatus);
                     break;
                 case AudioStatus.End:
-                    SceneSwitcher.loadMainScene();
+                    if (audioIndex == endAudio.Count)
+                    {
+                        SceneSwitcher.loadMainScene();
+                        break;
+                    }
+                    audioSource.PlayOneShot(endAudio[audioIndex]);
+                    dialogText.text = introText.end[audioIndex];
+                    Debug.Log(DEBUG_MARK + audioStatus + " " + audioIndex);
+
+                    if (audioIndex < endAudio.Count)
+                    {
+                        audioIndex++;
+                    }
                     break;
             }
-            dialogText.text = introText.getTextFromAudioStatus(audioStatus);
         }
 
     }

@@ -1,7 +1,26 @@
 {
-    "intro": "Ciao, ben tornato! Questo viaggio è stato divertente?\nGuardati inotrno. Ci sono un sacco di pesci che nuotano",
-    "environment": "Puoi cliccare un punto dello schermo e se sei fortunato una decorazione apparirà",
-    "character": "Quando vedrai uno di questi simpatici amici, toccalo per iniziare a parlare con lui",
-    "filters": "Lo vedi il bottone in basso a destra? Toccalo per indossare simpatiche maschere",
-    "end": "Se avrai bisogno di aiuto clicca su di me.\nIniziamo!"
+  "intro": [
+    "Hey ciao! Bentornato\nQuesto viaggio è stato divertente?",
+    "Sei curioso di conoscere nuovi amici in fondo al mare?",
+    "Muovi il tablet e guardati intorno.\nCi sono un sacco di pesci che nuotano"
+  ],
+  "environment": [
+      "Aiutami a decorare questo ambiente posizionando piante e conchiglie su pavimenti e muri",
+      "Puoi toccare un punto dello schermo e se sei fortunato una decorazione apparirà"
+    ],
+  "character": [
+      "Esplorando questo nuovo mondo potrai incontrare questi animali",
+      "Quando vedrai uno di questi simpatici amici, toccalo per iniziare a parlare con lui",
+      "Sono sicura che avrà cose molto interessanti da raccontarti"
+  ],
+  "filters": [
+      "Prima di lasciarti giocare, devo dirti un ultima cosa",
+      "Vedi il bottone bianco in basso a destra?",
+      "Ecco! Puoi toccarlo per indossare simpatiche maschere"
+  ],
+  "end": [
+    "Se avrai bisogno di me, sarò qui in basso",
+    "Tocca su di me e ti aiuterò",
+    "Sei pronto?\nInziamo!"
+  ]
 }

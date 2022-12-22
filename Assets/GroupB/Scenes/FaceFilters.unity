@@ -660,10 +660,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cda9d5e297d242048ae046c410a97a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHelpAudio: {fileID: 8300000, guid: 48d9edc5abdb84a6e9967140869bebe5, type: 3}
-  environmentHelpAudio: {fileID: 8300000, guid: 7e05eede487084019806d8ebb7dea0c9,
-    type: 3}
-  filterHelpAudio: {fileID: 8300000, guid: f2a5b507a8aa14ab7802de37d967f804, type: 3}
+  characterHelpAudio: []
+  environmentHelpAudio: []
+  filterHelpAudio:
+  - {fileID: 8300000, guid: d51d240b942c4481dab8f1000e58c044, type: 3}
+  - {fileID: 8300000, guid: bc873ddecc4414f9f917ad1421f4b61f, type: 3}
   dialogPanel: {fileID: 1445697964}
   dialogTextObject: {fileID: 82436843}
   textAsset: {fileID: 4900000, guid: 1cf439aa943804c87a36845a692dfca9, type: 3}

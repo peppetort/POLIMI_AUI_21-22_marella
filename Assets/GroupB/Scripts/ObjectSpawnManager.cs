@@ -20,7 +20,7 @@ public class ObjectSpawnManager : MonoBehaviour
     // keeps track of the position of each istantiated object
     Dictionary<GameObject, Vector3> spawnedObjectPositionMap = new Dictionary<GameObject, Vector3>();
 
-    const float OBJECT_MIN_DISTANCE = 0.1f;
+    const float OBJECT_MIN_DISTANCE = 0.15f;
 
     private Vector3 scaleChange = new Vector3(-0.9f, -0.9f, -0.9f);
 

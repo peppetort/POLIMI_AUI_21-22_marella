@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9759fa7139f07403facf0e894fd54e17
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_RaycastManager: {instanceID: 0}
+  - spawnablePrefab: {fileID: 6744956066791735244, guid: d1925cb1aaaa142b8a85806d0402fc35,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

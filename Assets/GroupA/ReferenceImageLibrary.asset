@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5416009567143933016
+  m_GuidHigh: 12668194878974008497
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5217401855898749833
+      m_GuidHigh: 15274705254596092052
+    m_SerializedTextureGuid:
+      m_GuidLow: 11833673645329483762
+      m_GuidHigh: 12417317408175330617
+    m_Size: {x: 0.2, y: 0.15495208}
+    m_SpecifySize: 1
+    m_Name: Submarine
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5445771625445104044
+      m_GuidHigh: 11939659890692475290
+    m_SerializedTextureGuid:
+      m_GuidLow: 16467817372161291959
+      m_GuidHigh: 6813564934718182602
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Window
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5602900059331217105
+      m_GuidHigh: 295518795646293923
+    m_SerializedTextureGuid:
+      m_GuidLow: 15295326097295681516
+      m_GuidHigh: 18374742813594454362
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Killerwhale
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4827794013156615259
+      m_GuidHigh: 10222712300538123174
+    m_SerializedTextureGuid:
+      m_GuidLow: 15299018599016020679
+      m_GuidHigh: 5194539059691000282
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Nemo
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4673285094764017127
+      m_GuidHigh: 15434788990586497922
+    m_SerializedTextureGuid:
+      m_GuidLow: 16449342914083398594
+      m_GuidHigh: 1707500234525377656
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Seagull
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5624157588133392153
+      m_GuidHigh: 16473793415780195483
+    m_SerializedTextureGuid:
+      m_GuidLow: 2625244200953284887
+      m_GuidHigh: 4972089947412076009
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Seahorse
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5225871842573094697
+      m_GuidHigh: 10137227944488214657
+    m_SerializedTextureGuid:
+      m_GuidLow: 17586779011894766317
+      m_GuidHigh: 6365047385853064315
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Squid
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5336902811411754121
+      m_GuidHigh: 5781790505394163378
+    m_SerializedTextureGuid:
+      m_GuidLow: 1443977563914818357
+      m_GuidHigh: 12144897813648946472
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Turtle
+    m_Texture: {fileID: 0}

@@ -143,7 +143,7 @@ public class Assistant : MonoBehaviour
     {
         Scene scene = SceneSwitcher.getCurrentScene();
 
-        if (scene.buildIndex == (int)Scenes.MAIN)
+        if (scene.buildIndex == (int)Scenes.WAITINGROOM)
         {
             if (MarkerObjectsManager.instantiatedCharacter == null)
                 return HelpStatus.Environment;

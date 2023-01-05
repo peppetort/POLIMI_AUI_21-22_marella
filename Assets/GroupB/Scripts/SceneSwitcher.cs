@@ -6,21 +6,29 @@ using UnityEngine.SceneManagement;
 enum Scenes
 {
     WELCOME = 0,
-    INTRODUCTION = 1,
-    MAIN = 2,
-    FILTER = 3,
-
+    CORRIDOR = 1,
+    INTRODUCTION = 2,
+    WAITINGROOM = 3,
+    FILTER = 4,
 }
 
 public class SceneSwitcher : MonoBehaviour
 {
+    public static void loadWelcomeScene()
+    {
+        SceneManager.LoadScene((int)Scenes.WELCOME);
+    }
+    public static void loadCorridorScene()
+    {
+        SceneManager.LoadScene((int)Scenes.CORRIDOR);
+    }
     public static void loadIntroductionScene()
     {
         SceneManager.LoadScene((int)Scenes.INTRODUCTION);
     }
-    public static void loadMainScene()
+    public static void loadWaitingRoom()
     {
-        SceneManager.LoadScene((int)Scenes.MAIN);
+        SceneManager.LoadScene((int)Scenes.WAITINGROOM);
     }
 
     public static void loadFilterScene()
@@ -28,7 +36,8 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene((int)Scenes.FILTER);
     }
 
-    public static Scene getCurrentScene(){
+    public static Scene getCurrentScene()
+    {
         return SceneManager.GetActiveScene();
     }
 }

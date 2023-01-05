@@ -135,7 +135,7 @@ public class AssistantIntroduction : MonoBehaviour
                 case AudioStatus.End:
                     if (audioIndex == endAudio.Count)
                     {
-                        SceneSwitcher.loadMainScene();
+                        SceneSwitcher.loadWaitingRoom();
                         break;
                     }
                     audioSource.PlayOneShot(endAudio[audioIndex]);

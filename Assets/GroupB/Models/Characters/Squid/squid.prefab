@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8474821430391534061}
-  - component: {fileID: 7866913231633779347}
   - component: {fileID: -4037280570796732057}
+  - component: {fileID: 7866913231633779347}
   - component: {fileID: 6171165529447286500}
   - component: {fileID: 4307788775383715556}
   m_Layer: 0
@@ -36,20 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
---- !u!136 &7866913231633779347
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418155263118387488}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.375181
-  m_Height: 2.114226
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &-4037280570796732057
 Animator:
   serializedVersion: 4
@@ -70,6 +56,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &7866913231633779347
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418155263118387488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.375181
+  m_Height: 2.114226
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &6171165529447286500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: {fileID: 429346471073634996, guid: 7c0ab6af1165242fe8e0bb0106273cbb, type: 3}
-  storyVideoPath: clownfish_story.mp4
+  storyVideoPath: squid_story.mp4
+  interactionStatus: 0
 --- !u!1001 &7046273566178685286
 PrefabInstance:
   m_ObjectHideFlags: 0

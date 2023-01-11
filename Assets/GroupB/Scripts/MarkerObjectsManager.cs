@@ -17,12 +17,11 @@ public class MarkerObjectsManager : MonoBehaviour
 
     //private Dictionary<string, GameObject> markerToCharacterInstancesMap = new Dictionary<string, GameObject>();
     public static GameObject instantiatedCharacter;
-    public static string instantiatedMarkerName;
+    private string instantiatedCharacterName;
 
     void Awake()
     {
         trackedImagesManager = GetComponent<ARTrackedImageManager>();
-
     }
 
     void OnEnable()
@@ -37,66 +36,74 @@ public class MarkerObjectsManager : MonoBehaviour
         trackedImagesManager.trackedImagesChanged -= OnTrackedImagesChanged;
         if (instantiatedCharacter != null)
             Destroy(instantiatedCharacter);
-        instantiatedMarkerName = null;
+        instantiatedCharacterName = null;
+
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
+
         foreach (var trackedImage in eventArgs.added)
         {
+            Debug.Log(DEBUG_MARK + "tracked image added!");
             var markerName = trackedImage.referenceImage.name;
             GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
-            if (markerObject == null)
-                return;
+
 
             if (instantiatedCharacter != null)
                 Destroy(instantiatedCharacter);
 
             instantiatedCharacter = Instantiate(markerObject, trackedImage.transform);
-            instantiatedMarkerName = markerName;
+            instantiatedCharacterName = markerName;
             Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
         }
 
 
         foreach (var trackedImage in eventArgs.updated)
         {
+            var markerName = trackedImage.referenceImage.name;
+
             if (trackedImage.trackingState == TrackingState.Limited)
             {
-                // probably the marker is outside the camera or in general poor traking info
+                // probably the marker is outside the camera or in general poor tracking info
                 if (instantiatedCharacter == null)
-                    return;
+                    continue;
+
+                if (markerName != instantiatedCharacterName)
+                    continue;
+
                 Character character = instantiatedCharacter.GetComponent<Character>();
                 if (character.interactionStatus == InteractionStatus.Ready)
                 {
-
-                    Destroy(instantiatedCharacter);
-                    instantiatedMarkerName = null;
-                    return;
+                    instantiatedCharacter.SetActive(false);
+                    continue;
                 }
 
             }
+            else
+            {
+                if (markerName != instantiatedCharacterName)
+                {
+                    Destroy(instantiatedCharacter);
 
-            var markerName = trackedImage.referenceImage.name;
+                    GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
+                    instantiatedCharacter = Instantiate(markerObject, trackedImage.transform);
+                    instantiatedCharacterName = markerName;
+                }
 
-            if (instantiatedMarkerName == markerName)
-                return;
-
-            if (instantiatedCharacter != null)
-                Destroy(instantiatedCharacter);
-
-            GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
-            instantiatedCharacter = Instantiate(markerObject, trackedImage.transform);
-            instantiatedMarkerName = markerName;
-
-            Debug.Log(DEBUG_MARK + markerObject.name + " instantiated!");
+                instantiatedCharacter.SetActive(true);
+                instantiatedCharacter.transform.position = trackedImage.transform.position;
+                instantiatedCharacter.transform.rotation = trackedImage.transform.rotation * Quaternion.Euler(-90f, 180f, 0f);
+            }
         }
 
 
         foreach (var trackedImage in eventArgs.removed)
         {
+            Debug.Log(DEBUG_MARK + "tracked image removed!");
             if (instantiatedCharacter != null)
                 Destroy(instantiatedCharacter);
-            instantiatedMarkerName = null;
+            instantiatedCharacterName = null;
 
             Debug.Log(DEBUG_MARK + instantiatedCharacter.name + " destroyed!");
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.ARFoundation;
 
 enum Scenes
 {
@@ -28,11 +29,15 @@ public class SceneSwitcher : MonoBehaviour
     }
     public static void loadWaitingRoom()
     {
+        LoaderUtility.Deinitialize();
+        LoaderUtility.Initialize();
         SceneManager.LoadScene((int)Scenes.WAITINGROOM);
     }
 
     public static void loadFilterScene()
     {
+        LoaderUtility.Deinitialize();
+        LoaderUtility.Initialize();
         SceneManager.LoadScene((int)Scenes.FILTER);
     }
 

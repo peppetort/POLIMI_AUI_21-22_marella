@@ -104,11 +104,19 @@ public class Character : MonoBehaviour
         Debug.Log(DEBUG_MARK + "dailog YES button clicked!");
         interactionStatus = InteractionStatus.Ready;
         dialog.SetActive(false);
-        var videoPath = Path.Combine(Application.streamingAssetsPath, storyVideoPath);
+
+        var videoPath = Path.Combine(Application.persistentDataPath, storyVideoPath);
+        print(DEBUG_MARK + videoPath);
 
         if (File.Exists(videoPath))
         {
-            Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Minimal);
+            Debug.Log(DEBUG_MARK + "FILE EXIST!");
+            Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Full);
+            Debug.Log(DEBUG_MARK + "Video playback completed.");
+        }
+        else
+        {
+            Debug.Log(DEBUG_MARK + "FILE NOT EXIST!");
         }
     }
 

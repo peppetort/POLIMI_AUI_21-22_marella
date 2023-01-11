@@ -169,7 +169,7 @@ public class Assistant : MonoBehaviour
     {
         dialogPanel.SetActive(true);
         animator.enabled = true;
-        animator.Play("Jump");
+        animator.Play("Idle");
         audioIndex = 0;
         helpStatus = selectHelperStatus();
     }

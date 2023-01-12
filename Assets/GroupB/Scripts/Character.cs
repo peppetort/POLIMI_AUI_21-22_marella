@@ -35,6 +35,13 @@ public class Character : MonoBehaviour
     {
         DEBUG_MARK = DEBUG_MARK + "[" + gameObject.name + "] ";
 
+        var videoPath = Path.Combine(Application.persistentDataPath, storyVideoPath);
+        if (!File.Exists(videoPath))
+        {
+            string fileURL = "jar:file://" + Application.dataPath + "!/assets/" + storyVideoPath;
+            StartCoroutine(CopyMP4File(fileURL));
+        }
+
         animator = gameObject.GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
         videoPlayer = gameObject.GetComponent<VideoPlayer>();
@@ -55,6 +62,20 @@ public class Character : MonoBehaviour
 
         buttons[0].onClick.AddListener(onYesButtonClickedCallback);
         buttons[1].onClick.AddListener(onNoButtonClickedCallback);
+    }
+
+    private IEnumerator CopyMP4File(string fileURL)
+    {
+        Debug.Log(DEBUG_MARK + " coping video from " + fileURL);
+        WWW www = new WWW(fileURL);
+        yield return www;
+        string targetFile = Application.persistentDataPath + "/" + storyVideoPath;
+        // save file
+        using (BinaryWriter writer = new BinaryWriter(File.Open(targetFile, FileMode.Create)))
+        {
+            writer.Write(www.bytes);
+        }
+        Debug.Log(DEBUG_MARK + " copied video to " + targetFile);
     }
 
     public void OnMouseDown()

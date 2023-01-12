@@ -110,7 +110,6 @@ public class Character : MonoBehaviour
 
         if (File.Exists(videoPath))
         {
-            Debug.Log(DEBUG_MARK + "FILE EXIST!");
             Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Full);
             Debug.Log(DEBUG_MARK + "Video playback completed.");
         }

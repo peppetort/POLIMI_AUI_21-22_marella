@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
     public GameObject dialog;
     [SerializeField]
     public string storyVideoPath;
+    public GameObject video;
 
     private Animator animator;
     private AudioSource audioSource;

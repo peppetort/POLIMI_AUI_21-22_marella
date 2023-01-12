@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.EventSystems;
 
 
 public class ObjectSpawnManager : MonoBehaviour
@@ -44,6 +45,9 @@ public class ObjectSpawnManager : MonoBehaviour
         if (touch.phase != TouchPhase.Ended)
             return;
 
+        // clicked on UI element
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
 
         var touchPosition = touch.position;
 

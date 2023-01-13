@@ -37,6 +37,14 @@ public class ImageRecognition : MonoBehaviour
     [SerializeField]
     private GameObject seahorseImage;
 
+    //seagull image
+    [SerializeField]
+    private GameObject seagullImage;
+
+    //turtle image
+    [SerializeField]
+    private GameObject turtleImage;
+
     [SerializeField]
     private AudioSource audioSource;
 
@@ -74,27 +82,22 @@ public class ImageRecognition : MonoBehaviour
         _aRTrackedImageManager.trackedImagesChanged -= OnChanged;
     }
 
-
+    
     public void OnChanged(ARTrackedImagesChangedEventArgs args)
     {
-
+       
         foreach (ARTrackedImage trackedImage in args.added)
         {
             print("args.added");
 
-            if (trackedImage.referenceImage.name.Equals("WaitingRoom"))
-            {
-                SceneSwitcher.loadIntroductionScene();
-            }
-
             //the image is the submarine sticker
             if (trackedImage.referenceImage.name.Equals("Submarine"))
             {
-                AddSubmarine(trackedImage);
+                AddSubmarine(trackedImage);               
             }
 
             //the image is the window sticker
-            else if (trackedImage.referenceImage.name.Equals("Window"))
+            else if(trackedImage.referenceImage.name.Equals("Window"))
             {
                 //add window frame to the UI
                 AddWindowFrame();
@@ -105,20 +108,15 @@ public class ImageRecognition : MonoBehaviour
                 PlaceAnimal(trackedImage);
         }
 
-
+        
         foreach (ARTrackedImage trackedImage in args.updated)
         {
-            print("args.updated " + trackedImage.referenceImage.name + " " + trackedImage.trackingState);
-
-            if (trackedImage.referenceImage.name.Equals("WaitingRoom"))
-            {
-                SceneSwitcher.loadIntroductionScene();
-            }
+            print("args.updated " + trackedImage.referenceImage.name +" "+ trackedImage.trackingState);
 
             //the image is the submarine sticker
             if (trackedImage.referenceImage.name.Equals("Submarine"))
             {
-                print("1 " + trackedImage.trackingState);
+                print("1 " +trackedImage.trackingState);
                 UpdateSubmarine(trackedImage);
             }
 
@@ -163,7 +161,7 @@ public class ImageRecognition : MonoBehaviour
         }
 
         //true the moment the TrackingState goes from Tracking to limited
-        if (submarineState.Equals(TrackingState.Tracking) && newSubmarineState.Equals(TrackingState.Limited))
+        if(submarineState.Equals(TrackingState.Tracking) && newSubmarineState.Equals(TrackingState.Limited))
         {
             prefab.SetActive(false);
         }
@@ -228,6 +226,16 @@ public class ImageRecognition : MonoBehaviour
         {
             AddKillerwhale();
         }
+
+        else if (name.Equals("Seagull"))
+        {
+            AddSeagull();
+        }
+
+        else if (name.Equals("Turtle"))
+        {
+            AddTurtle();
+        }
         else
             AddSeahorse();
     }
@@ -250,6 +258,16 @@ public class ImageRecognition : MonoBehaviour
     private void AddSeahorse()
     {
         seahorseImage.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    private void AddSeagull()
+    {
+        seagullImage.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    private void AddTurtle()
+    {
+        turtleImage.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
 

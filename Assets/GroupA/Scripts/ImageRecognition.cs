@@ -46,7 +46,7 @@ public class ImageRecognition : MonoBehaviour
     private GameObject turtleImage;
 
     [SerializeField]
-    private AudioSource audioSource;
+    private AudioSource[] audioSources;
 
     private ARTrackedImageManager _aRTrackedImageManager;
 
@@ -144,7 +144,7 @@ public class ImageRecognition : MonoBehaviour
         prefab.transform.localPosition = Vector3.zero;
         prefab.SetActive(true);
 
-        audioSource.PlayDelayed(0);
+        audioSources[0].PlayDelayed(0);
     }
 
 
@@ -182,6 +182,7 @@ public class ImageRecognition : MonoBehaviour
         prefab.transform.localRotation = rotation;
 
         AddImage(name);
+        playAudio(name);
     }
 
 
@@ -210,6 +211,34 @@ public class ImageRecognition : MonoBehaviour
     {
         //changes the image transparency from 0 to 255 to show it
         windowImage.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    private void playAudio(string name)
+    {
+        if (name.Equals("Seagull"))
+        {
+            audioSources[1].PlayDelayed(0);
+        }
+        else if (name.Equals("Turtle"))
+        {
+            audioSources[2].PlayDelayed(0);
+        }
+        else if (name.Equals("Squid"))
+        {
+            audioSources[3].PlayDelayed(0);
+        }
+        else if (name.Equals("Killerwhale"))
+        {
+            audioSources[4].PlayDelayed(0);
+        }
+        else if (name.Equals("Nemo"))
+        {
+            audioSources[5].PlayDelayed(0);
+        }
+        else if (name.Equals("Seahorse"))
+        {
+            audioSources[6].PlayDelayed(0);
+        }
     }
 
     private void AddImage(string name)

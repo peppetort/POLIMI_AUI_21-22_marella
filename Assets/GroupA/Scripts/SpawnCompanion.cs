@@ -15,6 +15,10 @@ public class SpawnCompanion : MonoBehaviour
     [SerializeField]
     private GameObject arCameraObject;
 
+    //Audio
+    [SerializeField]
+    private AudioSource[] audioSources;
+
     private GameObject spawnedObject;
 
     public void PlaceOctopus()
@@ -45,6 +49,9 @@ public class SpawnCompanion : MonoBehaviour
         */
 
         octopusGO.SetActive(true);
+        System.Random random = new System.Random();
+        int i = random.Next(6);
+        audioSources[i-1].PlayDelayed(0);
         
 
         //position in front of the camera

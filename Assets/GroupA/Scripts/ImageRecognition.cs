@@ -103,6 +103,12 @@ public class ImageRecognition : MonoBehaviour
                 AddWindowFrame();
             }
 
+            //the image is for the final change of scene
+            else if (trackedImage.referenceImage.name.Equals("NextScene"))
+            {
+                SceneSwitcher.loadIntroductionScene();
+            }
+
             //the image is an animal sticker
             else
                 PlaceAnimal(trackedImage);

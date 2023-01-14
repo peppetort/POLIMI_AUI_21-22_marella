@@ -13,15 +13,20 @@ public enum InteractionStatus
     TalkingEnded,
 }
 
+/*
+    manage the status of the character, is attached to each character gameobject
+*/
 public class Character : MonoBehaviour
 {
     private string DEBUG_MARK = "[DEBUG]";
 
+    // reference to dialog object that let the user to choose id
+    // hear a story or not
     [SerializeField]
     public GameObject dialog;
+    // name of the video associated to the character
     [SerializeField]
     public string storyVideoPath;
-    public GameObject video;
 
     private Animator animator;
     private AudioSource audioSource;
@@ -35,6 +40,10 @@ public class Character : MonoBehaviour
     {
         DEBUG_MARK = DEBUG_MARK + "[" + gameObject.name + "] ";
 
+        // check if the video has already been extracted from the app package
+        // otherwhise extract it and copy to the folder of the app
+        //
+        // that's because is not allowed to access resurces into the compressed package
         var videoPath = Path.Combine(Application.persistentDataPath, storyVideoPath);
         if (!File.Exists(videoPath))
         {
@@ -50,27 +59,33 @@ public class Character : MonoBehaviour
         Debug.Log(DEBUG_MARK + videoPlayer);
 
         dialog.SetActive(false);
+
+        // palce and adjust the position of the dialog 
+        // relative to the character one
         dialog = Instantiate(dialog, gameObject.transform);
         var z = renderer.bounds.size.z;
         dialog.transform.Translate(0, -0.02f, z * 0.7f);
 
         var dialogCanvas = dialog.GetComponentInChildren(typeof(Canvas)) as Canvas;
         var camera = GameObject.Find("AR Camera").GetComponent<Camera>();
+
+        // set the camera of the dialog in orther to enable raycast
         dialogCanvas.worldCamera = camera;
 
         var buttons = dialogCanvas.GetComponentsInChildren<UnityEngine.UI.Button>();
 
+        // add listener to buttons of the dialog
         buttons[0].onClick.AddListener(onYesButtonClickedCallback);
         buttons[1].onClick.AddListener(onNoButtonClickedCallback);
     }
 
+    // copy file from compresed package to persistent data folder
     private IEnumerator CopyMP4File(string fileURL)
     {
         Debug.Log(DEBUG_MARK + " coping video from " + fileURL);
         WWW www = new WWW(fileURL);
         yield return www;
         string targetFile = Application.persistentDataPath + "/" + storyVideoPath;
-        // save file
         using (BinaryWriter writer = new BinaryWriter(File.Open(targetFile, FileMode.Create)))
         {
             writer.Write(www.bytes);
@@ -80,6 +95,7 @@ public class Character : MonoBehaviour
 
     public void OnMouseDown()
     {
+        // start animation when clicked
         if (interactionStatus != InteractionStatus.Talking)
             animator.Play("Clicked");
         dialog.SetActive(false);
@@ -132,6 +148,7 @@ public class Character : MonoBehaviour
 
         if (File.Exists(videoPath))
         {
+            // play video in full screen using the device built-in player
             Handheld.PlayFullScreenMovie("file://" + videoPath, Color.black, FullScreenMovieControlMode.Full);
             Debug.Log(DEBUG_MARK + "Video playback completed.");
         }
@@ -143,6 +160,7 @@ public class Character : MonoBehaviour
 
     private void onNoButtonClickedCallback()
     {
+        // reset the status
         Debug.Log(DEBUG_MARK + "dailog NO button clicked!");
         interactionStatus = InteractionStatus.Ready;
         dialog.SetActive(false);

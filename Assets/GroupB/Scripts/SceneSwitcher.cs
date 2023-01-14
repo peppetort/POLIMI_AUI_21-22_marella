@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 
+// associate the index of each secene to a enum
 enum Scenes
 {
     WELCOME = 0,
@@ -13,6 +14,9 @@ enum Scenes
     FILTER = 4,
 }
 
+/*
+    class to change scene globally based on an Scene enum
+*/
 public class SceneSwitcher : MonoBehaviour
 {
     public static void loadWelcomeScene()

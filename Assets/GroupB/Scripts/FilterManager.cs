@@ -9,6 +9,7 @@ public class FilterManager : MonoBehaviour
     private string DEBUG_MARK = "[DEBUG][FilterManager] ";
     private ARFaceManager arFaceManager;
     public GameObject faceFilterGameObject;
+    // keep reference to instantited mask gameobject
     private GameObject instantiatedFaceFilter;
 
 
@@ -43,6 +44,8 @@ public class FilterManager : MonoBehaviour
 
         foreach (ARFace trackedface in eventArgs.updated)
         {
+            // need to destroy and recreate object at every update
+            // update the position and rotation is not enoght 
             Destroy(instantiatedFaceFilter);
             instantiatedFaceFilter = Instantiate(faceFilterGameObject, trackedface.transform);
         }
@@ -58,6 +61,8 @@ public class FilterManager : MonoBehaviour
         }
     }
 
+    // allow to change the filter gameobject
+    // it's actually colled by the button on the UI
     public void changeFaceFilter(GameObject filterGameObject)
     {
         if (instantiatedFaceFilter != null)

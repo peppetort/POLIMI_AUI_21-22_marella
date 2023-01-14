@@ -12,11 +12,16 @@ public class MarkerObjectsManager : MonoBehaviour
 
     [SerializeField]
     public ARTrackedImageManager trackedImagesManager;
+
+    // list containing all Charachers available
     [SerializeField]
     public List<GameObject> characheterGameObjectList;
 
-    //private Dictionary<string, GameObject> markerToCharacterInstancesMap = new Dictionary<string, GameObject>();
+    // global reference to the character actually instantieted
+    // at most one at a time
     public static GameObject instantiatedCharacter;
+    // keep the name of the isntatieted character in order to 
+    // retrieve the gemobject from the list
     private string instantiatedCharacterName;
 
     void Awake()
@@ -34,6 +39,8 @@ public class MarkerObjectsManager : MonoBehaviour
     {
         // remove event handler
         trackedImagesManager.trackedImagesChanged -= OnTrackedImagesChanged;
+
+        // to be sure that the instantited character has been destroied
         if (instantiatedCharacter != null)
             Destroy(instantiatedCharacter);
         instantiatedCharacterName = null;
@@ -47,6 +54,8 @@ public class MarkerObjectsManager : MonoBehaviour
         {
             Debug.Log(DEBUG_MARK + "tracked image added!");
             var markerName = trackedImage.referenceImage.name;
+
+            // retoreve gameobject given name (gameobject and marker have the same name)
             GameObject markerObject = characheterGameObjectList.Find(item => item.name == markerName);
 
 
@@ -63,15 +72,16 @@ public class MarkerObjectsManager : MonoBehaviour
         {
             var markerName = trackedImage.referenceImage.name;
 
+            // check if the traking is good enought
             if (trackedImage.trackingState == TrackingState.Limited)
             {
-                // probably the marker is outside the camera or in general poor tracking info
                 if (instantiatedCharacter == null)
                     continue;
 
                 if (markerName != instantiatedCharacterName)
                     continue;
 
+                // reset the status 
                 Character character = instantiatedCharacter.GetComponent<Character>();
                 if (character.interactionStatus == InteractionStatus.Ready)
                 {
@@ -82,6 +92,8 @@ public class MarkerObjectsManager : MonoBehaviour
             }
             else
             {
+                // check if a different character has been istantiated and update the position of
+                // the right one
                 if (markerName != instantiatedCharacterName)
                 {
                     Destroy(instantiatedCharacter);

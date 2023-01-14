@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 
+/*
+    attached to filter UI element (button)
+*/
 public class OnFilterButtonTap : MonoBehaviour
 {
     private string DEBUG_MARK = "[DEBUG][OnFilterButtonTap]";
@@ -18,6 +21,7 @@ public class OnFilterButtonTap : MonoBehaviour
     }
     public void OnMouseDown()
     {
+        // call function of FilterManager
         ARFaceManager.GetComponent<FilterManager>().changeFaceFilter(filterGameObject);
     }
 }

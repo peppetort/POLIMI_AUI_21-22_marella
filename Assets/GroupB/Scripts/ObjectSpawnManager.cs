@@ -13,6 +13,8 @@ public class ObjectSpawnManager : MonoBehaviour
 
     [SerializeField]
     ARRaycastManager m_RaycastManager;
+
+    // list containing all available decoration prefabs
     [SerializeField]
     List<GameObject> spawnablePrefabList;
     List<ARRaycastHit> m_Hits = new List<ARRaycastHit>();
@@ -21,6 +23,7 @@ public class ObjectSpawnManager : MonoBehaviour
     // keeps track of the position of each istantiated object
     Dictionary<GameObject, Vector3> spawnedObjectPositionMap = new Dictionary<GameObject, Vector3>();
 
+    // minimun distacne to instantitate an object 
     const float OBJECT_MIN_DISTANCE = 0.15f;
 
     private Vector3 scaleChange = new Vector3(-0.9f, -0.9f, -0.9f);
@@ -45,13 +48,13 @@ public class ObjectSpawnManager : MonoBehaviour
         if (touch.phase != TouchPhase.Ended)
             return;
 
-        // clicked on UI element
+        // ignore when clicked on UI element
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
         var touchPosition = touch.position;
 
-
+        // raycast onnly on planes
         if (m_RaycastManager.Raycast(touchPosition, m_Hits, TrackableType.PlaneWithinPolygon))
         {
 
@@ -59,6 +62,7 @@ public class ObjectSpawnManager : MonoBehaviour
             {
                 ARPlane plane = hit.trackable as ARPlane;
 
+                // spawn a random prefab and try until one has been instantiated correctly
                 bool res = SpawnRandomPrefab(hit.pose.position, plane.alignment);
 
                 if (res)
@@ -75,7 +79,7 @@ public class ObjectSpawnManager : MonoBehaviour
 
     private bool SpawnRandomPrefab(Vector3 spawnPosition, PlaneAlignment planeAlignment)
     {
-        // pick random prefab from spawnable list
+        // select tag according to the detected plane 
         var filterTag = "";
         if (planeAlignment == PlaneAlignment.HorizontalUp)
             filterTag = "horizontal";
@@ -86,10 +90,12 @@ public class ObjectSpawnManager : MonoBehaviour
 
 
 
-
+        // get all prefab that respect the selected tag
         var filteredPrefabs = spawnablePrefabList.Where(o => o.tag == filterTag).ToList();
         if (filteredPrefabs.Count == 0)
             return false;
+
+        // generate a random index and pick a random object from list
         var random = new System.Random();
         int index = random.Next(filteredPrefabs.Count);
         GameObject selectedPrefab = filteredPrefabs[index];
@@ -105,8 +111,10 @@ public class ObjectSpawnManager : MonoBehaviour
 
         var newPrefab = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
         newPrefab.transform.localScale += scaleChange;
-        //newPrefab.transform.Rotate(0f, 180f, 0f);
         spawnedObjectPositionMap[selectedPrefab] = spawnPosition;
+
+        // remove object from original list when instantiated 
+        // in order to prevent a same object to be instantiated twice
         spawnablePrefabList.RemoveAll(o => o.name == selectedPrefab.name);
         return true;
     }

@@ -13,6 +13,13 @@ public enum AudioStatus
     End, // There are not more info
 }
 
+/*
+    class to deserialize JSON file containing
+    text of assistant's help audio.
+
+    Each JSON object is a list of string. The list is ordered according to the
+    sequence of the audio in order to keep them syncronized.
+*/
 [System.Serializable]
 public class AssistantIntroText
 {

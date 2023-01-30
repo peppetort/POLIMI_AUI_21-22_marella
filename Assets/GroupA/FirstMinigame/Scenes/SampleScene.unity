@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196129673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.32, y: 0, z: 0}
+  m_LocalPosition: {x: 2.32, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,8 +408,8 @@ MonoBehaviour:
   - {fileID: 429584117}
   - {fileID: 1450225739}
   - {fileID: 1598921255}
-  GameTime: 60
-  RestartGame: 60
+  GameTime: 10
+  RestartGame: 10
   GameText: {fileID: 5604138}
 --- !u!114 &519420034
 MonoBehaviour:
@@ -1096,7 +1096,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498270562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -0.2593, z: 0}
+  m_LocalPosition: {x: 0.06, y: -0.2593, z: 2.1}
   m_LocalScale: {x: 5.8047047, y: 4.697302, z: 1.1083332}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -23,7 +23,8 @@ public class BandaidController : MonoBehaviour
         
         if (Input.GetButtonDown("Fire1") && stitchspawner.GameTime>0)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);            Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);            
+            Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position);
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
@@ -84,7 +85,7 @@ public class BandaidController : MonoBehaviour
     private GameObject AddBandaid(Touch TouchPos)
     {
         Vector3 objPos = Camera.main.ScreenToWorldPoint(TouchPos.position);
-        objPos.z = 7;
+        objPos.z = -0.6f;
         //bandaid.GetComponent<SpriteRenderer>().sprite = objectList[Random.Range(0, objectList.Count)];
         //bandaid.GetComponent<SpriteRenderer>().sprite = objectList[0];
         GameObject _bandaid = Instantiate(bandaid, objPos, Quaternion.identity) as GameObject;

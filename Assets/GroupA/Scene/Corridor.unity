@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4439403, g: 0.4931519, b: 0.5722083, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1463,6 +1463,7 @@ GameObject:
   - component: {fileID: 1195928419}
   - component: {fileID: 1195928418}
   - component: {fileID: 1195928420}
+  - component: {fileID: 1195928421}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1519,6 +1520,23 @@ MonoBehaviour:
   - {fileID: 1407462067}
   - {fileID: 1704377933}
   - {fileID: 1196766524}
+--- !u!114 &1195928421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195928417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a23f280169949e4a29defeaa8e2dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowImage: {fileID: 1397339576}
+  nemoImage: {fileID: 1481904046}
+  squidImage: {fileID: 1548641028}
+  seagullImage: {fileID: 411543582}
+  turtleImage: {fileID: 166373107}
 --- !u!1 &1196766523
 GameObject:
   m_ObjectHideFlags: 0

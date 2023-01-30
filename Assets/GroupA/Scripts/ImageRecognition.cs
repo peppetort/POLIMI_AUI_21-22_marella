@@ -82,10 +82,10 @@ public class ImageRecognition : MonoBehaviour
         _aRTrackedImageManager.trackedImagesChanged -= OnChanged;
     }
 
-    
+
     public void OnChanged(ARTrackedImagesChangedEventArgs args)
     {
-       
+
         foreach (ARTrackedImage trackedImage in args.added)
         {
             print("args.added");
@@ -93,14 +93,26 @@ public class ImageRecognition : MonoBehaviour
             //the image is the submarine sticker
             if (trackedImage.referenceImage.name.Equals("Submarine"))
             {
-                AddSubmarine(trackedImage);               
+                AddSubmarine(trackedImage);
             }
 
             //the image is the window sticker
-            else if(trackedImage.referenceImage.name.Equals("Window"))
+            else if (trackedImage.referenceImage.name.Equals("Window"))
             {
                 //add window frame to the UI
                 AddWindowFrame();
+            }
+
+            //the image is for the first minigame change of scene            
+            else if (trackedImage.referenceImage.name.Equals("FirstMinigame"))
+            {
+                SceneSwitcher.loadFirstMinigameScene();
+            }
+
+            //the image is for the second minigame change of scene           
+            else if (trackedImage.referenceImage.name.Equals("SecondMinigame"))
+            {
+                SceneSwitcher.loadSecondMinigameScene();
             }
 
             //the image is for the final change of scene
@@ -111,18 +123,22 @@ public class ImageRecognition : MonoBehaviour
 
             //the image is an animal sticker
             else
+            {
                 PlaceAnimal(trackedImage);
+                UpdateAnimalImage(trackedImage);
+            }
+                
         }
 
-        
+
         foreach (ARTrackedImage trackedImage in args.updated)
         {
-            print("args.updated " + trackedImage.referenceImage.name +" "+ trackedImage.trackingState);
+            print("args.updated " + trackedImage.referenceImage.name + " " + trackedImage.trackingState);
 
             //the image is the submarine sticker
             if (trackedImage.referenceImage.name.Equals("Submarine"))
             {
-                print("1 " +trackedImage.trackingState);
+                print("1 " + trackedImage.trackingState);
                 UpdateSubmarine(trackedImage);
             }
 
@@ -135,8 +151,8 @@ public class ImageRecognition : MonoBehaviour
             }
 
             //the image is an animal sticker
-            else
-                UpdateAnimalImage(trackedImage);
+            // else
+            //     UpdateAnimalImage(trackedImage);
         }
     }
 
@@ -167,7 +183,7 @@ public class ImageRecognition : MonoBehaviour
         }
 
         //true the moment the TrackingState goes from Tracking to limited
-        if(submarineState.Equals(TrackingState.Tracking) && newSubmarineState.Equals(TrackingState.Limited))
+        if (submarineState.Equals(TrackingState.Tracking) && newSubmarineState.Equals(TrackingState.Limited))
         {
             prefab.SetActive(false);
         }

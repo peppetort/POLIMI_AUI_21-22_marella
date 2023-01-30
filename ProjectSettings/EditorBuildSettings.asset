@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GroupB/Scenes/FaceFilters.unity
     guid: 041f2c310b922be439f9941ea598a6ae
+  - enabled: 1
+    path: Assets/GroupA/FirstMinigame/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/GroupA/SecondMinigame/Scenes/SampleScene.unity
+    guid: bfeb92873f3384fb79eab3713f586949
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}

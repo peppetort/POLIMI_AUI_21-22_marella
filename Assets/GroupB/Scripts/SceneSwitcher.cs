@@ -12,6 +12,8 @@ enum Scenes
     INTRODUCTION = 2,
     WAITINGROOM = 3,
     FILTER = 4,
+    FIRSTMINIGAME = 5,
+    SECONDMINIGAME = 6,
 }
 
 /*
@@ -43,6 +45,16 @@ public class SceneSwitcher : MonoBehaviour
         LoaderUtility.Deinitialize();
         LoaderUtility.Initialize();
         SceneManager.LoadScene((int)Scenes.FILTER);
+    }
+
+    public static void loadFirstMinigameScene()
+    {
+        SceneManager.LoadScene((int)Scenes.FIRSTMINIGAME);
+    }
+
+    public static void loadSecondMinigameScene()
+    {
+        SceneManager.LoadScene((int)Scenes.SECONDMINIGAME);
     }
 
     public static Scene getCurrentScene()

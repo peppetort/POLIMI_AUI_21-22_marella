@@ -408,8 +408,8 @@ MonoBehaviour:
   - {fileID: 429584117}
   - {fileID: 1450225739}
   - {fileID: 1598921255}
-  GameTime: 10
-  RestartGame: 10
+  GameTime: 60
+  RestartGame: 60
   GameText: {fileID: 5604138}
 --- !u!114 &519420034
 MonoBehaviour:
